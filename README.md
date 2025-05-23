@@ -6,12 +6,17 @@ ReKo (Reflection Knockoff) takes an input of feature matrix and produce multiple
 The basics of knockoff filter can be found here: https://web.stanford.edu/group/candes/knockoffs/.
 
 ## Usage: 
-./reko -f filename -c number -t thread -o output_prefix
-1. -f str  input file contain feature matrix of n by p. 
-2. -b num  number of eigenpairs for rSVD in approximate EB estimates [0]. 
-3. -c num  copies of reflection knockoff to be constructed [10].
-4. -t num  number of threads [8].
-5. -o str  output prefix [out].
-6. -r int  random seed.
-7. -s chr  e: EB estimates; p: inv_sigma = sqrt(p) [e]
-      flt  inv_sigma to specify b~MNV(0,V) with V = inv_sigma I_p.  
+```
+Usage:   reko -f filename -c number -t thread -o output_prefix [-b:c:f:o:r:s:t:]
+Options: 
+         -b int        number of PCs for rSVD in approximate EB-estimates [0]
+         -c int        copies of knockoffs to be generated [1]
+         -f str        input file contain features nxp
+         -o str        output prefix [out]
+         -r int        random seedL
+         -s char       e: empirical Baeys estimates; p: inv_sigma = sqrt(p) [e]
+            flt        inv_sigma where b~MNV(0,V) and V = inv_sigma I_p 
+         -t int        number of threads [8]
+
+Bug report: Yongtao Guan <ytguan@gmail.com>
+```
