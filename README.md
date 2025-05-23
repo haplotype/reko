@@ -7,7 +7,11 @@ The basics of knockoff filter can be found here: https://web.stanford.edu/group/
 
 ## Usage: 
 ./reko -f filename -c number -t thread -o output_prefix
-1. -f input file is a n by p matrix where n is the number samples and p is number of features.
-2. -c specify number of copies of reflection knockoff you want to construct.
-3. -t specify number of threads. it will use all the avaiable threads by default.
-4. -o output prefix.  
+1. -f str  input file contain feature matrix of n by p. 
+2. -b num  number of eigenpairs for rSVD in approximate EB estimates [0]. 
+3. -c num  copies of reflection knockoff to be constructed [10].
+4. -t num  number of threads [8].
+5. -o str  output prefix [out].
+6. -r int  random seed.
+7. -s chr  e: EB estimates; p: inv_sigma = sqrt(p) [e]
+      flt  inv_sigma to specify b~MNV(0,V) with V = inv_sigma I_p.  
