@@ -647,8 +647,9 @@ int usage()
 {
 	fprintf(stderr, "\n");
 	fprintf(stderr, "Version: %s\n", VERSION);
-	fprintf(stderr, "Usage:   reko -f filename -c number -t thread -o output_prefix [-c:f:o:r:s:t:]\n");
+	fprintf(stderr, "Usage:   reko -f filename -c number -t thread -o output_prefix [-b:c:f:o:r:s:t:]\n");
         fprintf(stderr, "Options: \n");
+        fprintf(stderr, "         -b int        number of eigenpairs for rSVD in approximate EB estimates [0]\n");
         fprintf(stderr, "         -c int        copies of knockoffs to be generated [1]\n");
         fprintf(stderr, "         -f str        input file contain features nxp\n");
 //	fprintf(stderr, "         -l flt        used to select leading PCs for reflection [0.7]\n");
@@ -657,7 +658,7 @@ int usage()
 	fprintf(stderr, "         -r int        random seedL\n");                            
 //	fprintf(stderr, "         -p int        number of top PCs to approximate reflection [0]\n");
 	fprintf(stderr, "         -s char       e: empirical Baeys estimates; p: inv_sigma = sqrt(p) [e]\n");
-	fprintf(stderr, "            flt        inv_sigma where b~MNV(0,V) and V=sigma I_p \n");
+	fprintf(stderr, "            flt        inv_sigma where b~MNV(0,V) and V = inv_sigma I_p \n");
 //	fprintf(stderr, "         -u flt        threshold to pick columns of U in SVD \n");
 	fprintf(stderr, "         -t int        number of threads [8]\n");
 	fprintf(stderr, "\n");
