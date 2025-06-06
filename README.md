@@ -1,9 +1,6 @@
 # ReKo
-ReKo (Reflection Knockoff) takes an input of feature matrix and produce multiple copies of knockoffs. The construction is based on a novel method, and the following paragarph is an exerpt from the manuscript in preparation. 
+ReKo (Reflection Knockoff) takes an input of feature matrix and produce multiple copies of knockoffs. The basics of knockoff filter can be found here: https://web.stanford.edu/group/candes/knockoffs/. The manuscript detailing ReKo can be found at https://www.biorxiv.org/content/10.1101/2025.01.16.633369v2
 
-> In this paper, we introduce a novel method to estimate S by first constructing mirror images Y of the original feature X via Householder reflection. Their difference, W= 1/2 (X-Y), is orthogonal to X and thus T = cov(X, W) is a diagonal matrix.  We define S = \alpha T, and estimate the scalar \alpha by examining the largest eigenvalues of the scaled W.  Such an S=\hat\alpha T leads to much more powerful knockoffs, and its computation requires no optimization.  We call the knockoffs constructed via Householder reflection **reflection knockoff** (ReKo).
-
-The basics of knockoff filter can be found here: https://web.stanford.edu/group/candes/knockoffs/.
 
 ## Usage: 
 ```
