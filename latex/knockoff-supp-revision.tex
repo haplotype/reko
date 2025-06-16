@@ -1,0 +1,485 @@
+%<code>
+
+\documentclass[12pt,Times]{article}
+%\usepackage[sort&compress,numbers]{natbib}
+\usepackage{float,natbib}
+
+\usepackage{amsmath, amsfonts, amsthm}
+\usepackage{enumerate}
+\usepackage{geometry} % see geometry.pdf on how to lay out the page. There's lots.
+%\geometry{a4paper} % or letter or a5paper or ... etc
+% \geometry{landscape} % rotated page geometry
+\usepackage{graphicx,subfigure}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{setspace}
+\usepackage{caption}
+\usepackage{bm,afterpage}
+\usepackage{multirow}
+\usepackage{geometry}
+%\geometry{top=1in, bottom=1.5in, left=1.in, right=1.in}
+\geometry{top=1in, bottom=1.5in, left=0.75in, right=0.75in}
+
+\usepackage{lineno}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{adjustbox}
+
+
+
+\def\cite{\citep}
+\def\citeN{\citet}  %in-text
+\def\citeNP{\citep} % parances.
+
+\definecolor{gray}{RGB}{175,175,175}
+\def\tcg{\textcolor{gray}}
+\def\tcr{\textcolor{red}}
+\def\tcb{\textcolor{black}}
+\def\ii{{(i)}}
+\def\kk{{(k)}}
+\def\Theta{\xi}
+\def\0{{\mathbf{0}}}
+\def\1{{\mathbf{1}}}
+\def\D{{\mathbf{D}}}
+\def\T{{\mathbf{T}}}
+\def\mbd{{\mathbf{d}}}
+\def\mbr{{\mathbf{r}}}
+\def\e{{\mathbf{e}}}
+\def\E{{\mathbb{E}}}
+\def\mbu{{\mathbf{u}}}
+\def\mbv{{\mathbf{v}}}
+\def\V{{\mathcal{V}}}
+\def\x{{\mathbf{x}}}
+\def\tX{{\mathbf{\tilde{X}}}}
+\def\X{{\mathbf{X}}}
+\def\Y{{\mathbf{Y}}}
+\def\C{{\mathbf{C}}}
+\def\CoW{{\mathbf{Cow}}}
+\def\B{{\mathbf{B}}}
+\def\g{{\mathbf{g}}}
+\def\G{{\mathbf{G}}}
+\def\al{{\mathbf{\alpha}}}
+\def\ga{{\mathbf{\gamma}}}
+\def\y{{\mathbf{y}}}
+\def\mbeta{{\mathbf{\beta}}}
+\def\a{{\mathbf{a}}}
+\def\b{{\mathbf{b}}}
+\def\s{{\mathbf{s}}}
+\def\z{{\mathbf{z}}}
+\def\Z{{\mathbf{Z}}}
+\def\W{{\mathbf{W}}}
+\def\tW{{\mathbf{\tilde{W}}}}
+\def\Q{{\mathbf{Q}}}
+\def\R{{\mathbf{R}}}
+\def\tR{{\mathbf{\tilde{R}}}}
+\def\U{{\mathbf{U}}}
+\def\V{{\mathbf{V}}}
+\def\D{{\mathbf{D}}}
+\def\K{{\mathbf{K}}}
+%\def\Kappa{{\mathbf{\Kappa}}}
+\def\S{{\mathbf{S}}}
+\def\I{{\mathbf{I}}}
+\def\mbH{{\mathbf{H}}}
+\def\P{{\mathbf{P}}}
+%\def\ik2{{\mathbf{\K^{-\frac{1}{2}}}}}
+\def\ik2{{\mathbf{\Lambda}}}
+\def\uk{{\mathbf{^{(k)}}}}
+\def\tr{{\textrm{tr}}}
+\def\diag{{\textrm{diag}}}
+\def\MVN{{\textrm{MVN}}}
+\def\th{{\mathbf{\theta}}}
+\def\cov{{\textrm{cov}}}
+\def\var{{\textrm{var}}}
+
+%\def\dag{{\mathbf{^{+}}}}
+\def\dag{{\dagger}}
+\newcommand{\triangleq}{\stackrel{\scriptscriptstyle \triangle}{=}}
+
+
+
+\newtheorem{theorem}{Theorem}[]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{prop}[theorem]{Proposition}
+
+%\newtheorem{prop}[Theorem]{Proposition}
+%\newtheorem{thm}[Theorem]{Theorem}
+%\newtheorem{coroll}[Theorem]{Corollary}
+
+
+\onehalfspacing
+%\doublespacing
+%\linenumbers
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\thefigure}{S\arabic{figure}}  % Adds "S" before the figure number
+
+% Optional: Customize the label in captions
+\renewcommand{\figurename}{Fig.}  % Change "Figure" to "Fig."
+
+\renewcommand{\thetable}{S\arabic{table}}  % Adds "S" before the figure number
+
+% Optional: Customize the label in captions
+\renewcommand{\tablename}{Tab.}  % Change "Figure" to "Fig."
+
+%% For titles, only capitalize the first letter
+
+
+%\title{Reflection Knockoffs via Householder Reflection (Supplementary)}
+\title{Reflection Knockoffs via Householder Reflection: Applications in proteomics and genetic fine mapping (Supplementary)}
+
+\author{Yongtao Guan and Daniel Levy \protect\\  National Heart, Lung, and Blood Institute}
+%\date{February 22, 2024}
+% The \maketitle command is necessary to build the title page.
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%the model-free knockoff is much more powerful than the fixed-x and model-x knockoffs. 
+%is this reversible? 
+%what if i put phenotype into generating knockoff as well, can this be a good way to share data? 
+%put phenotype into it. what if i do a knockoff on an image? 
+%can i show that this process is irreversible?  
+%
+
+%\editor{Associate Editor: Name}
+
+
+%\abstract {
+%We present a novel knockoff construction method, and demonstrate its superior performance in two applications: associating proteomic features with age, and genetic fine mapping. Both applications involve datasets with high correlation between features.
+%Our primary contribution is the invention of the reflection knockoffs (RK), which are constructed from the original features and their mirror images obtained via Householder reflections. 
+%RK outperforms Fixed-X and Model-X knockoffs by a large margin, particularly when features are highly correlated.  RK provides solutions to two outstanding genetic analysis challenges: 1) protein features appear overly abundant in association with age, knockoff filter using RK revealed that most associations are hitchhikers; and 2) in genetic fine mapping, knockoff filter using RK excelled in identifying true causal associations.
+%}
+
+%proteomics association and genetic fine mapping.  In both problems, due high correlation between features and the lack of sufficient number of nulls as calibration, it is difficult for traditional method to assign calibrated FDR.
+%\keywords{Knockoff; Householder reflection; QR decomposition; proteomics; fine mapping; correlated features}
+
+%\maketitle
+%\newpage
+%
+
+
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Rank-one Update for Eigenvalues and Eigenvectors}
+%\tcb{Let $\y$ be center response and $\X$ be column centered features, and consider a Bayesian linear regression 
+%\begin{equation}
+%\begin{aligned}
+%\y &= \X \beta + \e \\
+%    \beta &\sim MNV(0, \tau^{-1} \sigma^2) \\
+%    \e & \sim MNV(0, \tau^{-1} \I_n) 
+%\end{aligned}
+%\end{equation}
+%Integrate $\beta$ to obtain the marginal likelihood, and we get 
+%\begin{equation}
+%\y|\X, \sigma^2 \sim MNV(0, \tau^{-1} \sigma^2 \X\X^t + \tau^{-1}\I).  
+%\end{equation}
+%This is a special case of a linear mixed model and we can obtain maximum likelihood estimate of $\sigma^2$ using IDUL~\cite{idul}. But in this particular applicaiton, we find bisection method is more stable when $p$ is small, and $\sigma^2$ can be imposed with a practical upper bound $1$.  And we elect to use bisection method. 
+%Specifically, let $\X\X^t = \Q\D\Q^t$ where $\Q$ is orthonormal and $\D$ is diagonal. Multiplying $\y$ by $\Q^t$ from left we get 
+%\begin{equation}
+%\y_\Q | \X, \sigma^2 \sim MNV(0, \tau^{-1} \sigma^2 \D + \tau^{-1}).
+%\end{equation}
+ %
+\tcb{For ReKo we need to obtain eigendecomposition of $\X_{-j}\X_{-j}^t$ for each $j$, and naive computation can be expensive $O(np^3)$.
+Notice that  $\X_{-j}\X_{-j}^t = \X\X^t - \X_j \X_j^t$, that is a rank-one subtraction of $\X\X^t$. We can use reverse rank-one update to obtain eigendecomposition of  $\X_{-j}\X_{-j}^t$ with additional complexity of $O(p)$ from eigendecomposition of $\X\X^t$. This makes the total complexity of $O(np^2+p^2)$.  
+To update new eigenvalues, we want to solve 
+\begin{equation}
+\begin{aligned}
+\det(\X_{-j}\X_{-j}^t-\lambda \I) &= \det( \X\X^t - \X_j \X_j^t - \lambda \I) \\
+                        &= \det( \Q (\D - \lambda \I) \Q^t - \X_j \X_j^t ) \\
+                        &= \det( (\D - \lambda \I) - \Q^t\X_j \X_j^t\Q ) \\
+                                  &= \det( (\D - \lambda \I) - vv^t ) \\
+                        &= \det(\D-\lambda\I) (1- v^t (\D-\lambda\I)^{-1} v) \\
+                        &=0,  
+\end{aligned}
+\end{equation}
+where $v=\Q^t\X_j$. To this end, we want to solve secular equation 
+\begin{equation}
+f(\lambda) \overset{\triangle}{=}   1-\sum_{j=1}^p \frac{v_j^2}{\D_j -\lambda} = 0
+\end{equation}
+for $\lambda$ where $\D_j$ is the $j$-th diagonal element of $\D$. Following the convention, assume diagonal entries of $\D$ is in decreasing order.  These derivations are standard~\cite[c.f.][]{golub.13}. 
+At interval $x \in (\D_{j+1}, \D_{j})$, $f(x)$ is continuous, with $f(\D_{j+1} + \epsilon)$ and $f(\D_{j+1}-\epsilon)$  having opposite sign for some small positive $\epsilon$, so that there exists a solution such that $f(x) = 0$. On interval $x > \D_1$ no solution exits, but on interval $x \in [0, \D_p)$ solution exists. On each interval, golden ratio bisection algorithm can be used to solve for an eigenvalue. }
+
+\tcb{Once an updated eigenvalues $\lambda'$ is obtained, we can update eigenvectors.  
+From $\X_j=\Q v$, then eigenvalue system becomes $\Q(\D - vv^t) \Q^t u' = \lambda' u'$. 
+Define $w=\Q^t u'$, thus $u'=\Q w$. Then eigenvalue system becomes $(\D - vv^t) w = \lambda' w.$ Rearrange to get  $(\D - \lambda') w = v (v^t w).$ 
+Denote $a=v^tw$, we get   
+\begin{equation}
+w  = (\D - \lambda')^{-1} v.  
+\end{equation}
+We  compute $u'=\Q w$ and renormalize it to have unit variance.}
+
+%\section{Empirical Bayes estimates of Zellner's g-prior}
+%\tcb{
+%Alternatively, we can use Zellner's g-prior to get 
+%\begin{equation}
+%\begin{aligned}
+%\y &= \X \beta + \e \\
+%    \beta &\sim MNV(0, \tau^{-1} g(\X\X^t)^{-1}) \\
+%    \e & \sim MNV(0, \tau^{-1} \I_n) \\
+%         p(\tau) &\propto 1/\tau  
+%\end{aligned}
+%\end{equation}
+%The marginal likelihood $p(\y|g)$, after integrating out  $\beta$ and $\tau$ from joint distribution $p(y,\beta, \tau| g),$ is proportional to $f(g)$ below  
+%\begin{equation}
+% f(g) = (1+g)^{-p/2} \left[\y^t \y - \frac{g}{1+g} \y^t\X(\X^t\X)^{-1}\X^t\y \right]^{-(n-1)/2}
+%\end{equation}
+%%
+%Denote $v=\y^t \y$ and $c = \y^t\X(\X^t\X)^{-1}\X^t\y$, we get 
+%\begin{equation}
+% \log f(g) = -\frac{p}{2} \log(1+g) -\frac{(n-1)}{2} \log\left(v - \frac{g}{1+g} c \right)
+%\end{equation}
+%Take directive and set to $0$ we get
+%\begin{equation}
+%\begin{aligned}
+% 0 &= -\frac{p}{2} \frac{1}{(1+g)} -\frac{(n-1)}{2} \frac{-\frac{c}{(1+g)^2}}{\left((v - c) + \frac{c}{1+g} \right)} \\
+%             &= -p (1+g) + \frac{(n-1) c} {(v - c) + \frac{c}{1+g}}  \\       
+%                      &= -p + \frac{(n-1) c} {(v - c) (1+g) + c}  \\          
+%                                            &= -p + \frac{(n-1)} {(v/c - 1) (1+g) + 1}  \\   
+% \end{aligned}
+%\end{equation}
+%Therefore, empirical Bayes estimate $\hat{g}=\frac{n-p-1}{p} \frac{c}{v-c} - 1$. 
+%Then empirical Bayes estimate of $\hat\beta_{EB} = \frac{\hat{g}}{1+\hat{g}}\hat\beta_{OLS}$, and $\hat\y_{EB} = \frac{\hat{g}}{1+\hat{g}}\hat\y_{OLS}.$
+%Simulation studies support the use of normal prior over G-prior. 
+%}
+%
+%With Zellner's g-prior, we 
+
+\newpage
+\section{Simulation Correlated Features} \label{sec:sim}
+We designed two schemes to simulate correlated features. One is equi-correlation $c$ between all pairs of features, where we examined $c=0.2,0.5,0.8$  representing low, medium, and high levels of correlation. The other is vary-correlation where each pair of features have their correlations drawn from a bell-shaped histogram, and we let histogram peak at $0.2, 0.5, 0.8$. Vary-correlation better mimics the real data, but the equal correlation were used in the seminal paper of knockoff~\cite{barber.candes.15}, and we  include here for comparison (Tab.~\ref{tab:power1}). The weights for histograms peaked at $0.2, 0.5$ and $0.8$ are shown in Table~\ref{weights} below.  
+
+\begin{table}[htp]
+\begin{center}
+\begin{tabular}{c|cccccccccc}
+Correlation &0&0.1&0.2&0.3&0.4&0.5&0.6&0.7&0.8&0.9 \\
+\hline
+Low &20&40&60&40&20&10&0&0&0&0\\
+Medium &0&0&10&20&40&60&40&20&10&0\\
+High &0&0&0&0&0&10&20&40&60&40 \\
+\end{tabular}
+\end{center}
+\vspace{-0.2in}
+\caption{Weights used to draw correlation between samples. Low correlation has range $(0.1, 0.6)$ with peak at $0.2$, Median has range $(0.2,0.8)$ with peak at $0.5$, and High has range $(0.5,0.9)$ with peak at $0.8$.}
+\label{weights}
+\end{table}%
+
+In addition to simulate multivariate normal distributed features, we also simulated multivariate $t$ distributed features with degree of freedom $5$. This is done by scaling the multivariate normal vectors by a factor that is drawn from a $t$ (d.f.5) distributed random variable.  
+
+For sample size $n=2000$ and number of features $p=800$ (or $p=400$),  we randomly pick $20$ driver features.  Their effect sizes were assigned as $1$, but then rescaled so that the percentage of phenotypic variation explained (PVE) by these driver features are at a prescribed level. 
+We examined both low ($0.20$) and high ($0.8$) PVEs.  
+%
+For each setting of simulation parameters, we generated $100$ replicates of features and their associated phenotypes. Different knockoff methods were then used to generate their corresponding knockoffs. Original features and their knockoffs were fed to knockoff filters \allowbreak$\otimes$glmnet to generate knockoff statistics. These  $100$ sets of knockoff statistics  were pooled to call positives at different nominal FDR levels.  The called positives were compared with truth to obtain true and false positives.  
+
+
+
+
+\newpage
+\section{Power and Realized FDR with Different Priors }
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=0.95\textwidth]{Fig/eb-sigma-mvn.pdf}
+\caption{Power and realized FDR for ReKo under different priors. Model-X (orange), KnockoffScreen (green), and ReK-EB with emprical Bayes-estimated priors (red) are included for comparison. The prior for ReKo reflection is $\sigma \I_p$, and In the legend ReKo-sig5 means $\sigma = 5$.  For this simulation $n=2000$ and $p=800$ with medium correlation, and $\sqrt{p} \approx 28$. 
+We can see that the prior $\sqrt{p} \;\I_p$ is a sensible choice, but perhaps less powerful than EB-estimated prior. }
+\label{power1}
+\end{center}
+\vspace{-0.2in}
+\end{figure}
+
+
+
+
+\newpage
+\section{Comparison with Fixed-X and Model-X knockoffs}
+
+Table~\ref{tab:power1} compares different knockoffs using knockoff filters \allowbreak$\otimes$glmnet. For the equi-correlation (the top half of the table), where all pairs of features have identical correlation, the power gain of reflection knockoffs (ReKo-Null and ReKo-Norm) over Fixed-X and Model-X knockoffs was less than in the vary-correlation (the bottom half of the table). Presumably, the semidefinite program used by both Fixed-X and Model-X knockoffs performs better under the equi-correlation scenario, where there are $p-1$ identical small eigenvalues and one large eigenvalue for $\cov(\X).$  For varying correlation, ReKo-Null\allowbreak$\otimes$glmnet and ReKo-Norm\allowbreak$\otimes$glmnet produced higher power than both Fixed-X\allowbreak$\otimes$glmnet and Model-X\allowbreak$\otimes$glmnet. In particular, when correlations among features are large, both Fixed-X\allowbreak$\otimes$glmnet and Model-X\allowbreak$\otimes$glmnet have little to no power, while ReKo-Null\allowbreak$\otimes$glmnet and ReKo-Norm\allowbreak$\otimes$glmnet maintain considerable power.  
+
+
+\begin{table}[htp]
+\begin{center}
+{%\tiny
+\begin{tabular}{ccccccc}
+%&&&\multicolumn{4}{c}{Knockoff filter}\\
+Mode&Corr&Level & Fixed-X & Model-X & ReKo-Null & ReKo-Norm \\
+\hline
+\multirow{6}{*}{Equi-Corr}
+&\multirow{2}{*}{$0.2$}
+&0.05&0.76 (0.04)&0.76(0.04)& 0.77 (0.04)&0.77 (0.06)\\
+&&0.10&0.78 (0.10)&0.78(0.09)& 0.78 (0.09)&0.79 (0.10)\\
+%&&0.20&0.81 (0.20)&0.80(0.18)& 0.81 (0.18)&0.81 (0.20)\\
+\cline{2-7}
+&\multirow{2}{*}{$0.5$}
+&0.05& 0.58 (0.06)&0.57(0.05)&0.57 (0.04)&0.58 (0.06)\\
+&&0.10& 0.61 (0.13)&0.60(0.10)&0.60 (0.11)&0.62 (0.13)\\
+%&0.20& 0.64 (0.22)&0.64(0.19)&0.64 (0.20)&0.66 (0.23)\\
+\cline{2-7}
+&\multirow{2}{*}{$0.8$}
+&0.05&0.28 (0.04)&0.26 (0.04)&0.31 (0.08)&0.31 (0.07)\\
+&&0.10&0.32 (0.10)&0.31 (0.07)&0.34 (0.12)&0.35 (0.13)\\
+%&&0.20&0.37 (0.20)&0.35 (0.17)&0.37 (0.20)&0.41 (0.27)\\
+\hline
+%\hline
+\multirow{6}{*}{Vary-Corr}
+&\multirow{2}{*}{Low}
+&0.05&0.00 (0.00)&0.58 (0.00)&0.76 (0.04)&0.76 (0.04)\\
+&&0.10&0.00 (0.00)&0.67 (0.03)&0.79 (0.09)&0.79 (0.08)\\
+%&&0.20&0.00 (0.00)&0.71 (0.12)&0.81 (0.19)&0.81 (0.20)\\
+\cline{2-7}
+&\multirow{2}{*}{Medium}
+&0.05&0.00 (0.00)&0.13 (0.00)&0.67 (0.05)&0.67 (0.06)\\
+&&0.10&0.00 (0.00)&0.18 (0.00)&0.70 (0.12)&0.69 (0.11)\\
+%&&0.20&0.00 (0.00)&0.36 (0.00)&0.73 (0.23)&0.73 (0.22)\\
+\cline{2-7}
+&\multirow{2}{*}{High}
+&0.05&0.00 (0.00)&0.00 (0.00)&0.58 (0.05)&0.59 (0.06)\\
+&&0.10&0.00 (0.00)&0.00 (0.00)&0.61 (0.11)&0.61 (0.11)\\
+%&&0.20&0.00 (0.00)&0.00 (0.00)&0.65 (0.22)&0.65 (0.24)\\
+\hline
+\end{tabular}
+}
+\end{center}
+\vspace{-0.1in}
+\caption{Power comparison between different knockoffs. Multivariate normal features were simulated with $n=2000$ and $p=400$, detailed in Section~\ref{sec:sim}.   Phenotypes were  simulated with $20$ driver features whose effect sizes were drawn from standard normal but rescaled to achieve PVE of $0.8$.   Columns Corr denote feature correlation in simulation: the top half of the table are equi-correlation, and the bottom half are varying correlation with low, medium and high correlations detailed in~Tab~\ref{weights}.  In each cell we have power and realized FDR (in parenthesis).  Columns ReKo-Null and ReKo-Norm are two varieties of Reflection Knockoffs, where ReKo-Null means random component was generated by sampling vectors in the null space while ReKo-Norm means random component was generated by drawing from the standard normal distribution.  The prior for reflection is $\sqrt{p} I_p$. The knockoff filter used here is $\otimes$glmnet$\allowbreak\otimes$Beta. }
+\label{tab:power1}
+\end{table}%
+
+
+\newpage 
+\section{Comparison via Multiple Knockoff Filters}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.45\textwidth]{Fig/sim-3methods-2.pdf}
+\includegraphics[width=0.45\textwidth]{Fig/sim-3methods.pdf}
+\caption{Power and realized FDR comparison between different knockoffs. Features  were simulated following multivariate normal distribution detailed in Section~\ref{sec:sim} with $n=2000$, $p=800$ and medium correlation. The number of driver features is $20$ and their effect sizes were drawn from standard normal but rescaled to achieve PVE of $0.8$. The results were pooled from $100$ replications. For each replicate, $10$ knockoff statistics were aggregated to call true and false positives. 
+In left panel, the top plot is nominal FDR vs power and the bottom plot is nominal FDR vs realized FDR.   
+In right panel, the top plot is realized FDR vs power and the bottom plot is identical to the bottom plot in the left panel.
+Different line styles represent different knockoff filters and different colors represent different knockoff methods. 
+}
+\label{fig:power1}
+\end{center}
+\vspace{-0.2in}
+\end{figure}
+
+\newpage 
+\section{Comparison via Multiple Knockoff Filters}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.45\textwidth]{Fig/sim.2-3methods-2.pdf}
+\includegraphics[width=0.45\textwidth]{Fig/sim.2-3methods.pdf}
+\caption{Power and realized FDR comparison between different knockoffs. Features  were simulated following multivariate normal distribution detailed in Section~\ref{sec:sim} with $n=2000$, $p=800$ and medium correlation. The number of driver features is $20$ and their effect sizes were drawn from standard normal but rescaled to achieve PVE of $0.2$. The results were pooled from $100$ replications. For each replicate, $10$ knockoff statistics were aggregated to call true and false positives. 
+In left panel, the top plot is nominal FDR vs power and the bottom plot is nominal FDR vs realized FDR.   
+In right panel, the top plot is realized FDR vs power and the bottom plot is identical to the bottom plot in the left panel.
+Different line styles represent different knockoff filters and different colors represent different knockoff methods.  
+The small PVE appears to produced biased estimates for small nominal FDR for KnockoffScreen and ReKo.  
+Model-X appears to have no power for small PVE. 
+}
+\label{fig:power1}
+\end{center}
+\vspace{-0.2in}
+\end{figure}
+
+
+\newpage 
+\section{Comparison with Multivariate Normal Features}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.95\textwidth]{Fig/mvn-kos-mx-reko.pdf}
+\caption{Power and realized FDR comparison between different knockoffs. Features  were simulated following Multivariate Normal Distribution detailed in Section~\ref{sec:sim}.  In particular, $n=2000$, $p=800$, with low, medium, and high correlations detailed in Fig.~\ref{weights}. Each setting was simulated $100$ replications.  The number of driver features is $20$ and their effect sizes were drawn from standard normal but rescaled to achieve PVE of $0.8$ for solid lines and $0.2$ for dashed lines. For each simulation setting, $10$ knockoff statistics were aggregated to call true and false positives. In these comparisons, the knockoff filter is $\otimes$glmnet.  Knockoffs were marked in different colors with orange for Model-X, green for KnockoffScreen, and red for ReKo.}
+\label{fig:power-normal}
+\end{center}
+\vspace{-0.2in}
+\end{figure}
+
+\newpage 
+\section{Comparison with Multivariate T Features}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.95\textwidth]{Fig/mvt-kos-mx-reko.pdf}
+\caption{Power and realized FDR comparison between different knockoffs. Features  were simulated following Multivariate T Distribution detailed in Section~\ref{sec:sim}.  In particular, $n=2000$, $p=800$, with low, medium, and high correlations detailed in Fig.~\ref{weights}. Each setting was simulated $100$ replications.  The number of driver features is $20$ and their effect sizes were drawn from standard normal but rescaled to achieve PVE of $0.8$ for solid lines and $0.2$ for dashed lines. For each simulation setting, $10$ knockoff statistics were aggregated to call true and false positives. In these comparisons, the knockoff filter is $\otimes$glmnet.  Knockoffs were marked in different colors with orange for Model-X, green for KnockoffScreen, and red for ReKo.}
+\label{fig:power-t}
+\end{center}
+\vspace{-0.2in}
+\end{figure}
+
+
+\newpage
+\section{Counts of Positives with and without Aggregation}
+Counts of positives with aggregation (of $10$ sets of knockoff statistics) was documented in 
+ Table 1 in main text. The results with nominal FDR $0.10$ were reproduced in the first row of the table below.   Counts of positives without aggregation were documented in the table below, where the counts were obtained from a single knockoff statistics. The mean and sd are for $10$ counts of positives without aggregation.  
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{cccc}
+n &MX &   KS & ReKo \\
+\hline
+10 &308 & 361 & 371  \\
+\hline 
+1&350 & 343 & 382 \\
+1&277 & 355 & 363 \\
+1&315 & 366 & 393 \\
+1&290 & 354 & 364 \\
+1 & 321 & 335 & 359 \\
+1 & 310 & 366 & 335 \\
+1 & 290 & 357 & 364 \\
+1 & 258 & 359 & 339 \\
+1 & 302 & 350 & 360 \\
+1 & 321 & 359 & 366 \\
+\hline 
+mean & 303.4 & 354.4 & 362.5 \\
+sd & 26.0 & 9.7 & 17.2 \\
+\hline
+\end{tabular}
+\end{center}
+\vspace{-0.1in}
+\caption{\tcb{Counts of significant association for proteomic data at nominal FDR $0.10$. Column MX contains results from Model-X\allowbreak$\otimes$fastBVSR; Column KS contains results from KnockoffScreen\allowbreak$\otimes$combined; Column ReKo contains results from ReKo\allowbreak$\otimes$combined. Column $n$ contains numbers of knockoff statistics aggregated to call positives.}}
+\label{combined}
+\vspace{-0.1in}
+\end{table}%
+
+
+\newpage
+\section{Speed and Time}
+We use two example datasets to illustrate the computation time of constructing reflection knockoffs, and model fitting time using different methods. The UK Biobank dataset has $n=14,752$ (sample) and $p=1,459$ (feature). Constructing $10$ copies of reflection knockoffs takes $14.2$ minutes using our C program reko with default options, and takes $3.3$ minutes if rSVD approximate computation was invoked (with -b 400). Fitting glmnet takes on average $2.5$ minutes; and fitting fastBVSR takes on average $246.6$ minutes with $1,000,000$ MCMC steps.  
+Taking \emph{GJB6} as an example we illustrate the computation time for fine mapping. The dataset has $n=1,477$ and $p=1,140$. Constructing $10$ copies of reflection knockoffs takes $36.4$ seconds using our C program reko with default options, and takes only $13.7$ seconds if rSVD approximate computation was invoked (with -b 400).  Fitting glmnet takes on average $10.5$ second; fitting SuSiE takes on average $20.2$ seconds; and fitting fastBVSR takes on average $90.0$ seconds with $1,000,000$ MCMC steps.  Note both reko and glmnet used multithreading (with maximum $112$ threads), and SuSiE and fastBVSR used a single thread. 
+
+
+
+
+
+\label{lastpage}
+\bibliographystyle{unsrt}
+\bibliography{knockoff-ref}
+\end{document}
+
+%\subsection{\tcb{Reflection over leading principal components}}
+%
+%\tcb{
+%ReKo computes a reflect of each feature over a space spanned by all other features, and knockoffs can be computed based on the features and their respective reflections. 
+%When features are correlated, a space spanned by all other features (the mirror) is highly similar to a space spanned by all feature, and this renders ReKo powerless.   
+%We therefore use shrinkage priors to keep a feature away from its mirror. 
+%The shrinkage priors can be estimated via an empirical Bayes approach.  We augment the feature matrix with the priors, and this brings power to ReKo.   
+%%An algorithm was designed to compute reflection of each augmented features over other augmented features (Supplementary). 
+%The data augmentation, however, produces inflated type I error when features are strongly correlated.
+%}
+%
+%
+%\tcb{To keep the type I error under control, instead of constructing a mirror using a space spanned by all other features, we use a space spanned by $n$ leading principal components of all other features. By adjusting the tunable parameter $n$, we can control the type I error.  The reflection over $n$ leading principal components also improves computation efficiency, as we can used rSVD to efficiently compute leading eigenpairs for $\A\A^t$ and use rank-one update to obtain eigenpairs for $\A_{,-j}\A_{,-j}^t$ (more details can be found in Supplementary). }
+%
+%\tcb{We present a heuristic rule to determine the number of leading principal components used for reflection. Let $\d$ be the set of singular values for $\A$ and $\d^2$ is athe set of eigenvalues for $\A^t\A$. Let the length of $\d$ be $p$. Let $\c$ be the cumulative sum of $\d^2$ such that $\c_j = \sum_{k<j} \d_k^2$. Let $\r_j = \c_j / \c_p$, that is, the total variation explained by top $j$ leading principal components. Simulation studies suggested that the number of leading principal components can be chosen as $n$ such that $\r_n \in (0.5,0.7)$. 
+%%To avoid full singular value decomposition, we perform rSVD to approximate top $20\%$ eigenpairs, and with the assumption that these eigenpairs explain $80\%$ of total variations, we can compute $\r$ using the eigenvalues obtained from rSVD and choose $n$ such that $\r_n = 0.8$.
+%} 
+%
+%\begin{figure}[H]
+%\begin{center}
+%\includegraphics[width=0.4\textwidth]{Fig/npc.png}
+%\caption{Power and realized FDR comparison of reflection over different number of principal components.  The data used was extracted from UKBB proteomic dataset with $1459$ features and $4957$ samples. Phenotypes were simulated by randomly choosing $200$ features, simulating normal effect sizes but rescaled so that the total phenotype variance explained is $0.90$. Top $10$ PCs explain $0.34$ of total variance, top $20$ PCs explain $0.41$, top $50$ explains $0.52$, top $100$ explains $0.62$, and top $200$ explains $0.75$. The top panel is power and the bottom is realized FDR with nominal FDR of $0.10$. We also compared fitting the model with glmnet and fastBVSR. [Move to Supplementary]}
+%\label{aggregate}
+%\end{center}
+%\vspace{-0.2in}
+%\end{figure}
+

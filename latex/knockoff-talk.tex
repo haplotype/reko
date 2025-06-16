@@ -1,0 +1,545 @@
+%stoichiometric
+
+\documentclass[]{beamer}
+
+\mode<presentation>
+{ \usetheme{boxes} }
+
+%\usefonttheme[onlylarge]{structurebold}
+%\setbeamerfont*{frametitle}{size=\small,series=\bfseries}
+
+\usecolortheme{lily}
+\usepackage{multicol,multirow}
+\usepackage{amsmath}
+\usepackage{amsfonts,dsfont}
+\usepackage{color}
+%\usepackage{graphicx}
+\usepackage{listings}
+
+\usepackage{beamerthemesplit}
+\usepackage{amssymb}
+\usepackage{verbatim}
+
+
+\usepackage[usenames,dvipsnames]{pstricks}
+\usepackage{epsfig}
+\usepackage{pst-grad} % For gradients
+\usepackage{pst-plot} % For axes
+\usepackage{subfig}
+
+\usepackage{wrapfig}
+\usepackage{booktabs}
+\usepackage{bm}
+\usepackage{longtable}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+%\usetheme{Warsaw}
+% or ...
+%\usetheme{Antibes}    % tree outline, neat
+%\usetheme{JuanLesPins}    % like Antibes, with shading
+%\usetheme{Bergen}    % outline on side
+%\usetheme{Luebeck}    % like Warsaw, square sides
+%\usetheme{Berkeley}    % interesting left bar outline
+%\usetheme{Madrid}    % clean, nice.  7/12 page numbers
+%\usetheme{Berlin}    % dots show slide number
+%\usetheme{Malmoe}    % OK, plain, unshaded
+\usetheme{Boadilla}    % nice, white bg, no top bar
+%\usetheme{Marburg}    % nice, outline on right
+%\usetheme{boxes}    % ???
+%\usetheme{Montpellier}    % tree outline on top, plainish white
+%\usetheme{Copenhagen}    % like Warsaw
+%\usetheme{PaloAlto}    % looks good
+%\usetheme{Darmstadt}    % like Warsaw with circle outline
+%\usetheme{Pittsburgh}
+%\usetheme{default}
+%\usetheme{Rochester}    % like boxy, unshaded warsaw
+%\usetheme{Dresden}    % circle outline on top
+%\usetheme{Singapore}    % purple gradient top
+%\usetheme{Frankfurt}    % like Warsaw with circle outline on top
+%\usetheme{Szeged}
+%\usetheme{Goettingen}    % light purple right bar outline
+%\usetheme{Warsaw}
+%\usetheme{Hannover}    % like Goett with bar on left
+%\usetheme{compatibility}
+%\usetheme{Ilmenau}
+
+
+
+%\reversemarginpar
+%\topmargin -1.0in
+%\oddsidemargin -0in
+%\textheight 6in
+%\textwidth 8in
+
+
+%\setbeamertemplate{footline}[page number]
+
+
+%\usepackage{tikz}
+%\usetikzlibrary{arrows}
+%\tikzstyle{block}=[draw opacity=0.7,line width=1.4cm]
+
+
+
+%%\usepackage{}
+%\def\tcb{\textcolor{blue}}
+%\def\tcr{\textcolor{red}}
+%\def\tcg{\textcolor{green}}
+%\def\mbf{\mathbb{}}
+%\def\ind{\mathds 1}
+%\def\BF{BF}
+
+%\def\tcr{\textcolor{red}}
+%\def\tcb{\textcolor{blue}}
+%\def\ii{{(i)}}
+%\def\kk{{(k)}}
+%\def\Theta{\xi}
+
+
+\def\diag{{\text{diag}}}
+
+\definecolor{gray}{RGB}{175,175,175}
+\def\tcg{\textcolor{gray}}
+\def\tcr{\textcolor{red}}
+\def\tcb{\textcolor{black}}
+\def\ii{{(i)}}
+\def\kk{{(k)}}
+\def\Theta{\xi}
+\def\0{{\mathbf{0}}}
+\def\1{{\mathbf{1}}}
+\def\D{{\mathbf{D}}}
+\def\T{{\mathbf{T}}}
+\def\c{{\mathbf{c}}}
+\def\d{{\mathbf{d}}}
+\def\r{{\mathbf{r}}}
+\def\e{{\mathbf{e}}}
+\def\E{{\mathbb{E}}}
+\def\mbu{{\mathbf{u}}}
+\def\mbv{{\mathbf{v}}}
+\def\V{{\mathcal{V}}}
+\def\x{{\mathbf{x}}}
+\def\tX{{\mathbf{\tilde{X}}}}
+\def\X{{\mathbf{X}}}
+\def\Y{{\mathbf{Y}}}
+\def\C{{\mathbf{C}}}
+\def\CoW{{\mathbf{Cow}}}
+\def\B{{\mathbf{B}}}
+\def\g{{\mathbf{g}}}
+\def\G{{\mathbf{G}}}
+\def\al{{\mathbf{\alpha}}}
+\def\ga{{\mathbf{\gamma}}}
+\def\y{{\mathbf{y}}}
+\def\mbeta{{\mathbf{\beta}}}
+%\def\A{{\mathbf{A}}}
+\def\a{{\mathbf{a}}}
+\def\b{{\mathbf{b}}}
+\def\s{{\mathbf{s}}}
+\def\z{{\mathbf{z}}}
+\def\Z{{\mathbf{Z}}}
+\def\W{{\mathbf{W}}}
+\def\tW{{\mathbf{\tilde{W}}}}
+\def\Q{{\mathbf{Q}}}
+\def\R{{\mathbf{R}}}
+\def\tR{{\mathbf{\tilde{R}}}}
+\def\U{{\mathbf{U}}}
+\def\V{{\mathbf{V}}}
+\def\D{{\mathbf{D}}}
+\def\K{{\mathbf{K}}}
+%\def\Kappa{{\mathbf{\Kappa}}}
+\def\S{{\mathbf{S}}}
+\def\I{{\mathbf{I}}}
+\def\mbH{{\mathbf{H}}}
+\def\P{{\mathbf{P}}}
+%\def\ik2{{\mathbf{\K^{-\frac{1}{2}}}}}
+\def\ik2{{\mathbf{\Lambda}}}
+\def\uk{{\mathbf{^{(k)}}}}
+\def\tr{{\textrm{tr}}}
+\def\diag{{\textrm{diag}}}
+\def\MVN{{\textrm{MVN}}}
+\def\th{{\mathbf{\theta}}}
+\def\cov{{\textrm{cov}}}
+\def\var{{\textrm{var}}}
+
+%\def\dag{{\mathbf{^{+}}}}
+\def\dag{{\dagger}}
+%\newcommand{\triangleq}{\stackrel{\scriptscriptstyle \triangle}{=}}
+
+
+
+
+\setbeamercovered{dynamic}
+% To remove the navigation symbols from
+% the bottom of slides%
+\setbeamertemplate{navigation symbols}{}
+%
+\usepackage{graphicx}
+%\usepackage{bm}         % For typesetting bold math (not \mathbold)
+%\logo{\includegraphics[height=0.6cm]{yourlogo.eps}}
+%
+%\title[Short title of the talk]{Beautiful Presentation using Beamer}
+%\author{Name of the Speaker}
+%\institute[U of X]
+%{
+%University of [...] \\
+%\medskip
+%{\emph{email@domain.ca}}
+%}
+%\date{\today}
+
+
+\title[ReKo]{Reflection Knockoffs via Householder Reflection: Applications in Proteomics and Genetic Fine Mapping}
+\author{Yongtao Guan} 
+\institute[]%[grant.guan@nih.gov]
+{
+Framingham Heart Study \\
+National Heart, Lung, and Blood Institute  %\\ 
+%\vspace{.2in}
+%present at \\ Department of Biostatistics, Boston University
+% {\includegraphics[height=1in]{logo-FHS3.jpeg}} \hspace{2in}
+%     {\includegraphics[height=0.8in]{logo-NHLBI.png}}
+
+}
+\date{\today}
+%\date{April 21, 2023}
+    
+
+\begin{document}
+
+\frame{\titlepage}
+
+%\section{Introduction}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Intro: Knockoff and Knockoff filter}
+\begin{itemize}
+\item Constructing knockoff features $\tX$ from $\X$;  
+\item Fit $y = f(\X, \tX) + e$ to obtain $\beta$ and $\beta'$ for $\X$ and $\tX$. 
+\item Compute \emph{knockoff statistics} $W_j = |\beta_j| - |\tilde\beta_j|$. 
+\item Knockoff threshold $T$ for $W$ at a nominal FDR level $q$ is:  
+\begin{equation}\label{knockoff.threshold}
+T=\min\left\{t: \frac{\#\{j: W_j \le -t\}}{\#\{j: W_j \ge t\}  \vee 1} \le q \right\}.
+\end{equation}
+
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Intro: Knockoff and Knockoff filter}
+For the knockoffs to have the desired property of controlling FDR, $\X$ and $\tX$ must follow:  
+\begin{equation}\label{intro.cov}
+\cov\left([\X, \tX]\right) = \begin{bmatrix} \Sigma & \Sigma-\S \\ \Sigma-\S & \Sigma \end{bmatrix}
+\end{equation}
+where $\S\ge\0$ is a diagonal matrix that satisfies 
+\begin{equation}\label{intro.cond}
+2\S - \S\Sigma^{-1}\S \ge \0. 
+\end{equation}
+$\S$ controls the degree of uncorrelated-ness between $\X_j$ and $\tX_j$, and larger $\S$ values bring more power to the knockoff filter. 
+\end{frame}
+
+
+\begin{frame}{Intro: Estimating S}
+\begin{itemize}
+\item Current method use semidefinite program (SDP) to estimate S. 
+\item We introduce a novel method to estimate S via Householder reflection. 
+\end{itemize}
+
+\end{frame}
+
+
+\section{Methods}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Reflection}
+\begin{lemma}\label{lem1}
+Suppose the data matrix $\X$ is $n \times p$ with $n > p$ and $\X$ is column-centered, scaled, and has full rank $p$. 
+Denote $\P_j = \X_{,-j} (\X_{,-j}^t  \X_{,-j} )^{-1}  \X_{,-j}^t $ where $\X_{,-j}$ is matrix $\X$ with $j$-th column removed. 
+Compute $\Y$ such that its $j$-th column is a Householder reflection of $\X_j$ with respect to $\P_j$, $\Y_j = (2 \P_j - \I)  \X_j$. 
+Define $\Z = \frac{1}{2}(\X -\Y)$. 
+\tcb{Denote $\cov(\X_j, \Y_k)$ as sample covariance between vector $\X_j$ and $\Y_k$. }
+Then the following hold: 
+\begin{itemize}
+ \item[a)] $\cov(\Y_j, \X_k) = \cov(\X_j, \X_k)$ for all $j \neq k$ and $j,k \in (1,2,\dots, p)$. 
+ \item[b)] $\cov(\Y_j, \X_j) < \var(\X_j)$ for all $j \in (1,2,\dots, p)$. 
+ \item[c)] \tcb{Let $\T$ be a matrix such that $\T_{jk} = \cov(\X_j, \Z_k)$, then $\T_{jk} = 0$ for all $j\ne k$ and $\T_{jj} = \cov(\Z_j, \Z_j) > 0$ for all $j$.}     
+ \item[d)] \tcb{$\X(\X^t\X)^{-1}\X \Y = \Y$ and $\X(\X^t\X)^{-1}\X \Z = \Z$.} 
+ \end{itemize}
+\end{lemma}
+\end{frame}
+
+
+
+\begin{frame}{Construction}
+the mean $\b$ and covariance $\C^t\C$ of a knockoff $\tX$ conditional on $\X$ are given by   
+\begin{equation}
+\begin{aligned}
+\b &= \X (\I - \Sigma^{-1} \S) \\
+ \C^t \C &= 2\S - \S \Sigma^{-1} \S.
+\end{aligned}
+\end{equation}
+
+Let $\S = \alpha \T$ for $\alpha\in(0,1]$. Straightforward calculations using the identities in Lemma~\ref{lem1} parts (c) and (d) yields: 
+\begin{equation} \label{ctc}
+\begin{aligned}
+ \b  & = \X - \alpha \Z \\ 
+\C^t \C    &=  2 \alpha \T - \alpha^2 \; \cov(\Z).                      
+\end{aligned}
+\end{equation}
+
+
+\end{frame}
+
+
+\begin{frame}{Construction }
+Let $\Q\Lambda\Q^t$ be the eigendecomposition of $\cov(\Z \T^{-1/2}).$ Substituting this, we obtain  
+\begin{equation} \label{ctc3}
+\begin{aligned}
+\C^t \C    &= \T^{1/2} \Q \left[2\alpha \I - \alpha^2 \Lambda\right] \Q^t \T^{1/2}.                     
+\end{aligned}
+\end{equation}
+
+\tcb{For $\C^t \C$ to be positive semi-definite, it is sufficient to have 
+\begin{equation} \label{B2}
+\B^2(\alpha) \triangleq 2\alpha\I  - \alpha^2  \Lambda  > \0. 
+\end{equation}
+Therefore it's sufficient to have $\alpha \le 2 / \Lambda_1$, where $\Lambda_1$ is the leading eigenvalue of $\cov(\Z \T^{-1/2})$.
+Since $\Lambda_1$ is positive and finite, and $\alpha \in (0,1]$, the optimal $\hat\alpha$ exists. This ensures $\C^t \C$ is positive semi-definite,  with $\C = \B(\hat\alpha)\Q^t \T^{1/2}.$} Consequently,  $\S=\hat\alpha \T \le 2\;\cov(\X)$, as guaranteed by the Schur complement condition. 
+
+We thus construct the knockoff as 
+\begin{equation} \label{reflection.knockoff}
+\begin{aligned}
+\tX = \X  - \hat\alpha \Z + \U \B(\hat\alpha) \Q^t \T^{1/2} 
+\end{aligned}
+\end{equation}
+where: If $\U$ is chosen from the null space of $\X$, $\tX$ is akin to Fixed-X knockoffs.  If $\U_j \sim MVN(\0,\I_n)$, $\tX$ is akin to Model-X second-order knockoff. 
+\end{frame}
+
+
+\begin{frame}{Shrinkage priors and data augmentation}
+In Lemma~\ref{lem1}, computing $\Y_j$ requires  the least square fit of the linear regression: 
+\begin{equation} \label{lm}
+\X_j = \X_{,-j} \mbeta_{-j} + \e
+\end{equation}
+to obtain $\hat\mbeta_{-j}$, which is then used to calculate $\Y_j = 2 \X_{,-j} \hat\mbeta_{-j}  - \X_j$.  
+When $p$ is large compare to $n$, and/or there exist highly correlated features, the model~\eqref{lm} is prone to overfitting, which can adversely affect the performance of the knockoff filter. 
+
+Suppse we put priors on $\mbeta_{-j}$ such as
+\begin{equation} \label{prior}
+\mbeta_{-j} \sim MVN(0, \sigma^2 \I_{(p-1)}), 
+\end{equation} 
+where $MVN$ denotes multivariate normal distribution, $\I_m$ is the identity matrix of dimension $m$, and $\sigma$ is the prior effect size to be specified. The Bayesian estimated effect sizes are given by 
+\begin{equation} \label{betahat}
+\hat\mbeta_{-j} = \left(\X_{,-j}^t \X_{,-j} + \sigma^{-2} \I_{(p-1)}\right)^{-1}  \X_{,-j}^t \X_j.
+\end{equation} 
+\tcb{The same solution can be achieved via augmenting $\X$ with ghost observations $\sigma^{-1} \I_p$ such that $\X \leftarrow [\X^t, \sigma^{-1} \I]^t$.} 
+
+
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{EB estimates of shrinkage priors}
+\begin{equation}
+\begin{aligned}\label{model2}
+\X_j &= \X_{,-j} \beta + \e \\
+    \beta &\sim MNV(0, \tau^{-1} \sigma^2) \\
+    \e & \sim MNV(0, \tau^{-1} \I_n) 
+\end{aligned}
+\end{equation}
+Integrate out $\beta$ to obtain the marginal likelihood, and we get 
+\begin{equation}
+\X_j|\X_{,-j}, \sigma^2 \sim MNV(0, \tau^{-1} \sigma_j^2 \X_{,-j}\X_{,-j}^t + \tau^{-1}\I).  
+\end{equation}
+This is a special case of a linear mixed model and we can obtain maximum likelihood estimate of $\sigma_j^2$ using IDUL~\cite{idul}. 
+To proceed, we obtain eigeindecomposition $\X_{,-j}\X_{,-j}^t = \Q_j\D_j\Q_j^t$ where $\Q_j$ is orthonormal and $\D_j$ is diagonal. 
+%(This can be done via singular value decomposition of $\X$ to avoid matrix multiplication.) 
+We rotate the system by multiplying ~\eqref{model2} by $\Q^t$ from left we get 
+\begin{equation} \label{ebj}
+\X'_j | \X'_{,-j}, \sigma^2 \sim MNV(0, \tau^{-1} \sigma_j^2 \D_j + \tau^{-1}).
+\end{equation}
+
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Computation: QR decomposition for Householder reflection}
+\begin{algorithmic}[1]
+    \STATE \textbf{Input:} A matrix $\X$ of $n \times p$ with full rank $p$.  
+    \STATE \textbf{Output:} ${\Y}$ of $n \times p$. 
+    \STATE Augment $\X$ by appending $\Sigma_p$, update $n\leftarrow (n+p)$.
+    \STATE Perform QR decomposition to obtain $\X=\Q\R$.  
+    \FOR {each column $\R_j$ of $\R$}
+        \STATE Denote $\R_{,-j}$ as matrix $\R$ with $j$-th column removed.
+        \STATE Do Givens rotation on $\R_{,-j}$ to obtain an upper triangular matrix $\U$. 
+        \STATE Do the same sequence of Givens rotation on $\R_j$ to obtain feature $\V$.
+        \STATE Solve $\V=\U\mbeta_{-j}$ with backward substitution to get $\hat\mbeta_{-j}$. 
+         \STATE Compute $\tilde{\R}_j = 2 \R_{,-j} \hat\mbeta_{-j}  - \R_j$, which is $j$-th column of $\tilde{\R}$.  
+    \ENDFOR
+    \STATE Compute $\Y = \Q \tilde{\R}$ 
+\STATE \textbf{return} $\Y[1:n,]$
+\end{algorithmic}
+\end{frame}
+
+\begin{frame}{Aggregation of multiple knockoff statistics}
+\begin{lemma} \label{lem:threshold}
+Let $W_{cat} =  (W^{(1)}, \dots, W^{(M)}),$ i.e., the pooled knockoff statistics from the $M$ runs. If we apply the standard knockoff threshold selection rule~\eqref{knockoff.threshold} to $W_{cat}$, the resulting threshold $T_{cat}$ also controls the FDR at level $q$. 
+Define the average knockoff statistic $\bar{W}_j = \frac{1}{M} \sum_{m=1}^M W^{(m)}_j$. 
+Selecting feature $j$ such that $ \bar{W}_j > T_{cat}$ controls the FDR at level $q$.  
+\end{lemma}
+\end{frame}
+
+
+\section{Results}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Aggregation}
+\begin{center}
+\includegraphics[width=0.5\textwidth]{Fig/test-ko.pdf}
+%\caption{Aggregating knockoff statistics improve power. Top panel is nominal FDR vs power; Bottom panel is nominal FDR vs realized FDR. The knockoff filter used to call positives is $\otimes$glmnet for all.   Results of Model-X and ReKo were obtained by aggregating $10$ copies of knockoff statistics. For KnockoffScreen, we produced results by using a single copy of knockoff statistics and by aggregating $2,4,$ and $10$ copies of knockoff statistics. The results are based on simulated features with $n=2000$ and $p=800$.  More details of simulation can be found in Supplementary Section 2. }
+%\label{aggregate}
+\end{center}
+%\vspace{-0.2in}
+\end{frame}
+%
+
+\begin{frame}{Comparison: Proteomics from UKBB}
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=0.45\textwidth]{Fig/ukbb-3methods-2.pdf}  
+\includegraphics[width=0.45\textwidth]{Fig/ukbb-3methods.pdf}  
+%\caption{
+%%Power and realized FDR comparison between different knockoffs. 
+%%The features are proteomics data from UK Biobank. .
+%%Left panel: the top plot is \emph{nominal} FDR vs. power.  Right panel: the top plot is \emph{realized} FDR vs. power. The bottom plots of two panels are identical. Different line styles represent different knockoff filters and different colors represent different knockoff methods.   The power and realized FDR were computed from $100$ replicates, and each replicate aggregates $10$ knockoff statistics. 
+%}
+%\label{ukbb}
+\end{center}
+\vspace{-0.2in}
+\end{figure}
+
+\end{frame}
+
+
+%\begin{frame}{Comparison }
+%\begin{figure}[h]
+%\begin{center}
+%%\includegraphics[width=0.45\textwidth]{Fig/ukbb-3methods-2.pdf}  
+%\includegraphics[width=0.45\textwidth]{Fig/ukbb-3methods.pdf}  
+%\caption{
+%%Power and realized FDR comparison between different knockoffs. 
+%%The features are proteomics data from UK Biobank. .
+%%Left panel: the top plot is \emph{nominal} FDR vs. power.  Right panel: the top plot is \emph{realized} FDR vs. power. The bottom plots of two panels are identical. Different line styles represent different knockoff filters and different colors represent different knockoff methods.   The power and realized FDR were computed from $100$ replicates, and each replicate aggregates $10$ knockoff statistics. 
+%}
+%\label{ukbb}
+%\end{center}
+%\vspace{-0.2in}
+%\end{figure}
+%
+%\end{frame}
+
+\begin{frame}{Comparison: HLA-DQB1 from FHS }
+\begin{figure}[h]
+\begin{center}
+{\includegraphics[width=0.45\textwidth]{Fig/hla-pm.pdf}}
+{\includegraphics[width=0.45\textwidth]{Fig/modelx-pm.pdf}}
+%\caption{
+%%Left panel: Comparisons between SuSiE, KnockoffScreen\allowbreak$\otimes$combined, and ReKo\allowbreak$\otimes$combined for different correlation threshold with features were extracted from genomic region \emph{HLA-DQB1}. Results of SuSiE in green; Results of KnockoffScreen in blue; Results of ReKo in red. Different line styles represent thresholds used to trim features. 
+%%Right panel: Comparison of Model-X\allowbreak$\otimes$glment (solid line), Model-X\allowbreak$\otimes$fastBVSR (dashed line), and Model-X\allowbreak$\otimes$combined (dotted line) for different correlation threshold (orange for correlation threshold of $0.90$, magenta for $0.95$, and pink for $0.99$) using the same features extracted from \emph{HLA-DQB1}. Results for SuSiE, KnockoffScreen$\otimes$combined, and ReKo$\otimes$combined at the threshold of $0.90$ were reproduced on the right panel for comparison.  The power and realized FDR were computed from $50$ replicates, and each replicate aggregates $10$ knockoff statistics. 
+%}
+%\label{pm}
+\end{center}
+\vspace{-0.2in}
+\end{figure}
+
+\end{frame}
+
+
+
+
+\begin{frame}{Proteomic association with age}
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{ccccc}
+Level & MX &   KS & ReKo & Overlap\\
+\hline 
+ 0.05 &256&306 & 309 & 291 (90\%)\\
+ 0.10 &308 & 361 & 371 & 345  (89\%)\\
+\hline
+\end{tabular}
+\end{center}
+%\vspace{-0.1in}
+%\caption{\tcb{Counts of significant association for proteomic data. Column MX contains results from Model-X\allowbreak$\otimes$fastBVSR; Column KS contains results from KnockoffScreen\allowbreak$\otimes$combined; Column ReKo contains results from ReKo\allowbreak$\otimes$combined. Denote $S_K$ and $S_R$ positive calls by KnockoffScreen$\otimes$combined and ReKo$\otimes$combined respectively, Column Overlap contains counts of intersect between $S_K$ and $S_R$, and the ratios in the parenthesis are Jaccard similarity coefficient.}}
+%\label{combined}
+%\vspace{-0.1in}
+\end{table}%
+
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Data}
+\begin{table}[h]
+\begin{center}
+{\small
+\begin{tabular}{llccccc}
+eGene &eQTL & MX & KS  & ReKo  & SuSiE & Type\\ 
+\hline
+\multirow{2}{*}{\emph{PPIEL}} 
+&rs79473113:1:39554348:1 & 1.00 & 1.00 & 1.00 & 1.00 & 1111 \\
+&rs7520271:1:39579041:1 & 0.80 & 0.82 & 0.87 & 0.97 & 1111 \\
+\hline
+\multirow{4}{*}{\emph{GJB6}}
+&rs12875121:13:20478719:1 & 0.95 & 0.97 & 0.98 & 0.99 & 1111 \\
+&rs12875121:13:20478719:0 & 0.76 & 0.78 & 0.79 & 0.89 & 1110 \\
+&rs9506450:13:20239478:0 & -0.15 & -0.27 & 0.61 & 0.44 & 0010 \\
+&rs9579911:13:20637437:0 & 0.23 & 0.26 & 0.38 & 0.20 &  0010 \\
+\hline
+\multirow{1}{*}{\emph{CCR9}}
+&rs9814578:3:45821775:1 & 0.85 & 0.93 & 0.98 & 0.98 & 1111 \\
+\hline
+\multirow{1}{*}{\emph{COA8}}
+&rs10143623:14:103720539:0 & 0.66 & 0.58 & 0.85 & 0.87 & 1110 \\ 
+\hline
+\multirow{1}{*}{\emph{NECAB3}}
+&rs2626556:20:33768509:0&  0.79 & 0.80 & 0.88 & 0.95 & 1111\\
+\hline
+\end{tabular}
+}
+\end{center}
+%\vspace{-0.1in}
+%\caption{\tcb{Fine mapping of selected eGenes. MX: Model-X; KS: KnockoffScreen. Column eQTL contain variants  information in the format of rs:chr:pos:pm where pm 1 paternal alleles, 0 maternal alleles. Columns MX, KS, and ReKo contain average knockoff statistics from knockoff filter \allowbreak$\otimes$fastBVSR. Column SuSiE contains PIP from SuSiE. Column Type contain four binary digits with 1 for positive call and 0 for negative call..}}
+%\label{poe}
+%\vspace{-0.1in}
+\end{table}%
+
+
+\end{frame}
+
+
+\section{Discussion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Accomplishments}
+
+\begin{itemize}
+\item Developed ReKo. 
+\item Aggregating multiple knockoff statistics. 
+\item The benefits of $\otimes$fastBVSR and $\otimes$combined. 
+\end{itemize}
+\end{frame}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Challenges}
+\begin{itemize}
+\item Extremely high correlation. Perhaps clustering first? 
+\item Reflection over subspace spanned by leading eigenvectors?  
+\item ReKo for data sharing.  
+\end{itemize}
+
+\end{frame}
+%
+
+
+\end{document}
+
+
+

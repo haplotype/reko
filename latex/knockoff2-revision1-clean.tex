@@ -1,0 +1,1235 @@
+%<code>
+
+\documentclass[12pt,Times]{article}
+%\usepackage[sort&compress,numbers]{natbib}
+\usepackage{float,natbib}
+
+\usepackage{amsmath, amsfonts, amsthm}
+\usepackage{enumerate}
+\usepackage{geometry} % see geometry.pdf on how to lay out the page. There's lots.
+%\geometry{a4paper} % or letter or a5paper or ... etc
+% \geometry{landscape} % rotated page geometry
+\usepackage{graphicx,subfigure}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{setspace}
+\usepackage{caption}
+%\usepackage{subcaption}
+\usepackage{bm,afterpage}
+\usepackage{multirow}
+\usepackage{geometry}
+%\geometry{top=1in, bottom=1.0in, left=1.in, right=1.in}
+%\geometry{top=1in, bottom=1.5in, left=0.75in, right=0.75in}
+
+%\geometry{paperwidth=5in,paperheight=8in,margin=0.2in,top=0.5in,bottom=0.5in}
+%\linespread{1.15}
+
+
+\addtolength{\oddsidemargin}{-.5in}%
+\addtolength{\evensidemargin}{-1in}%
+\addtolength{\textwidth}{1in}%
+\addtolength{\textheight}{1.7in}%
+\addtolength{\topmargin}{-0.5in}%
+%1inch all around
+
+\usepackage{lineno}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{adjustbox}
+\usepackage{caption}
+\captionsetup{width=\textwidth}
+
+\usepackage[table]{xcolor} % For coloring table cells
+\usepackage{colortbl}      % To use \cellcolor
+\usepackage{pgf}           % For dynamic calculations
+
+
+\def\cite{\citep}
+\def\citeN{\citet}  %in-text
+\def\citeNP{\citep} % parances.
+
+\definecolor{gray}{RGB}{175,175,175}
+\def\tcg{\textcolor{gray}}
+\def\tcr{\textcolor{red}}
+\def\tcb{\textcolor{black}}
+\def\ii{{(i)}}
+\def\kk{{(k)}}
+\def\Theta{\xi}
+\def\0{{\mathbf{0}}}
+\def\1{{\mathbf{1}}}
+\def\D{{\mathbf{D}}}
+\def\T{{\mathbf{T}}}
+\def\c{{\mathbf{c}}}
+\def\d{{\mathbf{d}}}
+\def\r{{\mathbf{r}}}
+\def\e{{\mathbf{e}}}
+\def\E{{\mathbb{E}}}
+\def\mbu{{\mathbf{u}}}
+\def\mbv{{\mathbf{v}}}
+\def\V{{\mathcal{V}}}
+\def\x{{\mathbf{x}}}
+\def\tX{{\mathbf{\tilde{X}}}}
+\def\X{{\mathbf{X}}}
+\def\Y{{\mathbf{Y}}}
+\def\C{{\mathbf{C}}}
+\def\CoW{{\mathbf{Cow}}}
+\def\B{{\mathbf{B}}}
+\def\g{{\mathbf{g}}}
+\def\G{{\mathbf{G}}}
+\def\al{{\mathbf{\alpha}}}
+\def\ga{{\mathbf{\gamma}}}
+\def\y{{\mathbf{y}}}
+\def\mbeta{{\mathbf{\beta}}}
+%\def\A{{\mathbf{A}}}
+\def\a{{\mathbf{a}}}
+\def\b{{\mathbf{b}}}
+\def\s{{\mathbf{s}}}
+\def\z{{\mathbf{z}}}
+\def\Z{{\mathbf{Z}}}
+\def\W{{\mathbf{W}}}
+\def\tW{{\mathbf{\tilde{W}}}}
+\def\Q{{\mathbf{Q}}}
+\def\R{{\mathbf{R}}}
+\def\tR{{\mathbf{\tilde{R}}}}
+\def\U{{\mathbf{U}}}
+\def\V{{\mathbf{V}}}
+\def\D{{\mathbf{D}}}
+\def\K{{\mathbf{K}}}
+%\def\Kappa{{\mathbf{\Kappa}}}
+\def\S{{\mathbf{S}}}
+\def\I{{\mathbf{I}}}
+\def\mbH{{\mathbf{H}}}
+\def\P{{\mathbf{P}}}
+%\def\ik2{{\mathbf{\K^{-\frac{1}{2}}}}}
+\def\ik2{{\mathbf{\Lambda}}}
+\def\uk{{\mathbf{^{(k)}}}}
+\def\tr{{\textrm{tr}}}
+\def\diag{{\textrm{diag}}}
+\def\MVN{{\textrm{MVN}}}
+\def\th{{\mathbf{\theta}}}
+\def\cov{{\textrm{cov}}}
+\def\var{{\textrm{var}}}
+
+%\def\dag{{\mathbf{^{+}}}}
+\def\dag{{\dagger}}
+\newcommand{\triangleq}{\stackrel{\scriptscriptstyle \triangle}{=}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\shadecell}[1]{%
+ %    \pgfmathsetmacro{\value}{1-#1} 
+    \cellcolor[gray]{#1} #1        % Set cell color and print the number
+}
+
+
+\newtheorem{theorem}{Theorem}[]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{prop}[theorem]{Proposition}
+
+%\newtheorem{prop}[Theorem]{Proposition}
+%\newtheorem{thm}[Theorem]{Theorem}
+%\newtheorem{coroll}[Theorem]{Corollary}
+
+\usepackage{caption}
+\captionsetup{width=0.88\textwidth}
+\onehalfspacing
+%\doublespacing
+\linenumbers
+\begin{document}
+
+
+%\def\spacingset#1{\renewcommand{\baselinestretch}%
+%{#1}\small\normalsize} \spacingset{1}
+ 
+%% For titles, only capitalize the first letter
+
+
+%\title{Reflection Knockoffs via Householder Reflection: Applications in genetic fine mapping and\\ proteomic signatures of age}
+\title{Reflection Knockoffs via Householder Reflection: Applications in Proteomics and Genetic Fine Mapping}
+
+\author{Yongtao Guan and Daniel Levy \protect\\  National Heart, Lung, and Blood Institute}
+%\date{December 18, 2024}
+%% The \maketitle command is necessary to build the title page.
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%the model-free knockoff is much more powerful than the fixed-x and model-x knockoffs. 
+%is this reversible? 
+%what if i put phenotype into generating knockoff as well, can this be a good way to share data? 
+%put phenotype into it. what if i do a knockoff on an image? 
+%can i show that this process is irreversible?  
+%
+
+%\editor{Associate Editor: Name}
+
+
+\abstract {
+We present a novel knockoff construction method, and demonstrate its superior performance in two applications: identifying proteomic signatures of age and genetic fine mapping. Both applications involve datasets of highly correlated features, but they differ in the abundance of driver associations.
+Our primary contribution is the invention of the reflection knockoff, which is constructed from mirror images -- obtained via Householder reflection -- of the original features. 
+The reflection knockoffs substantially outperform Model-X knockoffs in feature selection, particularly when features are highly correlated. 
+Our secondary contribution is a simple method to aggregate multiple sets of identically distributed knockoff statistics to improve the consistency of knockoff filters. 
+In the study of proteomic signatures of age, single feature tests showed overly abundant proteomic association with age.  Knockoff filters using reflection knockoffs and aggregation, however, revealed that a majority of these associations are hitchhikers instead of drivers. 
+When applied to genetic fine mapping, knockoff filters using reflection knockoffs and aggregation outperform a state-of-the-art method. We discuss a potentially exciting application of reflection knockoffs: sharing genetic data without raising concerns about privacy and regulatory violations.
+}
+
+\vspace{0.3in}
+\noindent%
+{\it Keywords:}  Knockoff filter;  reflection knockoff (ReKo); proteomics; fine mapping
+\vfill
+
+%\keywords{Knockoff filter; correlated features; proteomics; fine mapping}
+
+%article summary: Variable selection is difficult for highly correlated features.  We proposed a novel method ReKo to construct knockoffs for feature selection via knockoff filters. We demonstrate that ReKo is powerful for feature selection, particularly for highly correlated features in proteomics and genetic fine mapping.  By constructing mirror images via Householder reflection, ReKo introduces ghost observations that can effectively reduce correlation among features. Since feature selection is a technique that has broad applications, our method will be of interest to general audience. %
+
+\maketitle
+%\newpage
+%\spacingset{1.9} % DON'T change the spacing!
+\section{Introduction}
+
+Scientific research often deals with datasets containing strongly correlated features. One example is proteomics data, in which high correlation can be attributed to several factors including the inherent correlations among multiple proteins, protein-protein interactions, and the imperfect specificity of the assay. Another example is genetic fine mapping, where single nucleotide polymorphisms (SNPs) in a locus may be highly correlated due to linkage disequilibrium.  For these types of highly correlated data, identifying features that are truly associated with a phenotype of interest is a critical but challenging task. One key difficulty is controlling for false discovery, i.e., ``hitchhikers" that show association through correlation with genuinely associated ``driver" features. The knockoff filter~\cite{barber.candes.15,candes.etal.18} is a statistical framework designed to address this challenge by providing a robust way to identify true associations while controlling the false discovery rate (FDR).  
+
+Knockoff filters consist of four components: 1) constructing knockoff features;  2) conducting association analysis by jointly analyzing the original features and their knockoffs. The joint analysis can be conducted with either glmnet~\cite{glmnet}, which implements penalized regression methods, including LASSO~\cite{lasso} and Elastic-Net~\cite{elastic.net}, or fastBVSR~\cite{fastbvsr}, which implements an iterative complex factorization algorithm to fit Bayesian variable selection regression~\cite{pimass}, or with other machine learning algorithms, including support vector machines~\cite{svm} and random forests~\cite{random.forests}; 3) computing \emph{knockoff statistics} $W$: a vector of differences in the feature importance measure between the original features and their knockoffs, where the feature importance measure includes the magnitude of regression coefficients (Beta) and posterior inclusion probability (PIP);  and 4) determining the knockoff threshold from $W$ at a nominal FDR level (e.g.,$10\%$) to select features.  
+ 
+The most important component of the knockoff filter is constructing knockoffs $\tX$ conditioning on the original features $\X$. This is also the focus of our work.  For the knockoffs to have the desired property of controlling FDR, $\X$ and $\tX$ must follow:  
+\begin{equation}\label{intro.cov}
+\cov\left([\X, \tX]\right) = \begin{bmatrix} \Sigma & \Sigma-\S \\ \Sigma-\S & \Sigma \end{bmatrix}
+\end{equation}
+where $\S\ge\0$ is a diagonal matrix that satisfies 
+\begin{equation}\label{intro.cond}
+2\S - \S\Sigma^{-1}\S \ge \0. 
+\end{equation}
+$\S$ controls the degree of uncorrelated-ness between $\X_j$ and $\tX_j$, and larger $\S$ values bring more power to the knockoff filter. 
+Another key condition for $\tX$ is that it must satisfy that, conditional on $\X$, $\tX$ is independent of phenotypes of interest, which is automatically satisfied if the construction of $\tX$ is agnostic to the phenotypes. 
+ 
+A critical component in generating both Fixed-X and Model-X knockoffs is estimating $\S$.  Three methods have been developed to estimate $\S$: 1) The equi-correlated method where $\S$ is a scaling of an identity matrix; 2) The SDP method where $\S$ is obtained by optimizing a natural objective function subject to the inherent constraint using a semidefinite program (SDP)~\cite{barber.candes.15}; and 3) A two-stage method where the first stage produces an SDP-estimate of $\S$, but using an approximated feature covariance matrix, and the second stage linearly scales the SDP-estimated $\S$~\cite{candes.etal.18}. The SDP estimated $\S$ is more powerful than $\S$ estimated using the other two methods. 
+
+In this paper, we introduce a novel method to estimate $\S$ by first constructing mirror images $\Y$ of the original feature matrix $\X$ via Householder reflection. The difference, $\Z=\frac{1}{2}(\X-\Y)$, is orthogonal to $\X$ and thus $\T = \cov(\X, \Z)$ is a diagonal matrix, \tcb{where $\cov(\X,\Z)$ denotes a sample covariance matrix with $\T_{jk} = \cov(\X_j,\Z_k)$ denoting sample covariance between two column vectors $\X_j$ and $\Z_k$.}  We define $\S = \alpha \T$, and estimate the scalar $\hat\alpha$ by examining the largest eigenvalues of the scaled $\Z$.  Such $\S=\hat\alpha \T$ leads to more powerful knockoffs.   We call the knockoffs constructed via Householder reflection \emph{reflection knockoffs} (ReKo).  \tcb{Since its optimality comes from the leading eigenvalue and its computation does not require optimization, ReKo is numerically stable.}
+
+Due to the inherent randomness in constructing knockoffs, the knockoff filter may produce inconsistent results when applied to different copies of knockoffs. A second contribution of the paper is a simple method we propose to aggregate multiple sets of identically distributed knockoff statistics: pooling multiple knockoff statistics to determine the knockoff threshold and selecting features by comparing the average knockoff statistics with the knockoff threshold. This aggregation method produces more consistent results in real data analysis.    
+
+
+We apply reflection knockoffs and aggregate multiple sets of knockoff statistics to study two outstanding problems in genetics and proteomics, where the complex patterns of high correlation among features pose a challenge for existing methods.  
+In the study of the proteomics signature of age, proteomic features appear to be overly abundant in association with age. Our study using reflection knockoffs revealed that the majority of single-feature associations observed between proteomic features and age are hitchhikers.   
+In genetic fine mapping linkage, disequilibrium between nearby genetic variants makes it difficult to distinguish driver signals from hitchhikers. We demonstrate that reflection knockoffs significantly improve the power of knockoff filters for identifying driver variants.
+
+
+
+%%\newpage
+%\section{Materials and Methods}
+%\subsection{Reflection}
+%We have the following lemma regarding Householder reflection~\cite[c.f.][]{golub.13} and some useful properties for constructing knockoffs. 
+%
+%\begin{lemma}\label{lem1}
+%Suppose the data matrix $\X$ is $n \times p$ with $n > p$ and $\X$ is column-centered, scaled, and has full rank $p$. 
+%Denote $\P_j = \X_{,-j} (\X_{,-j}^t  \X_{,-j} )^{-1}  \X_{,-j}^t $ where $\X_{,-j}$ is matrix $\X$ with $j$-th column removed. 
+%Compute $\Y$ such that its $j$-th column is a Householder reflection of $\X_j$ with respect to $\P_j$, $\Y_j = (2 \P_j - \I)  \X_j$. 
+%Define $\Z = \frac{1}{2}(\X -\Y)$. 
+%\tcb{Denote $\cov(\X_j, \Y_k)$ as sample covariance between vector $\X_j$ and $\Y_k$. }
+%Then the following hold: 
+%\begin{itemize}
+% \item[a)] $\cov(\Y_j, \X_k) = \cov(\X_j, \X_k)$ for all $j \neq k$ and $j,k \in (1,2,\dots, p)$. 
+% \item[b)] $\cov(\Y_j, \X_j) < \var(\X_j)$ for all $j \in (1,2,\dots, p)$. 
+% \item[c)] \tcb{Let $\T$ be a matrix such that $\T_{jk} = \cov(\X_j, \Z_k)$, then $\T_{jk} = 0$ for all $j\ne k$ and $\T_{jj} = \cov(\Z_j, \Z_j) > 0$ for all $j$.}     
+% \item[d)] \tcb{$\X(\X^t\X)^{-1}\X \Y = \Y$ and $\X(\X^t\X)^{-1}\X \Z = \Z$.} 
+% \end{itemize}
+%\end{lemma}
+%
+%\begin{proof}
+%a) The projection matrix $\P_j = \X_{,-j}   (\X_{,-j}^t  \X_{,-j} )^{-1}  \X_{,-j}^t$ projects $\X_j$ onto  the column space of $\X_{,-j}$. 
+%Since $(\I - \P_j) \X_j$ is orthogonal to $\X_k$ for $k \neq j$, we have $\cov((\I-\P_j) \X_j, \X_k) = 0$. This implies $\cov(\P_j\X_j, \X_k) = \cov(\X_j, \X_k)$.  
+%Now $\Y_j = (2\P_j -\I) \X_j$, and direct computation gives: 
+%$\cov(\Y_j, \X_k) = \cov((2 \P_j - \I) \X_j, \X_k) = 2 \cov(\P_j\X_j, \X_k) - \cov(\X_j, \X_k).$ 
+%Substituting $\cov(\P_j\X_j, \X_k) = \cov(\X_j, \X_k)$, we obtain $\cov(\Y_j, \X_k) = \cov(\X_j, \X_k)$, proving (a).
+%
+%
+%b) The projection of $\X_j$ onto the space spanned by $\X_{,-j}$ as 
+%$\X_\V = \P_j \X_j$, and the orthogonal component as $\X_\bot = (\I-\P_j) \X_j$.  Thus, $\X_j=\X_\V + \X_\bot$.
+%The Householder reflection $\Y_j$ can then be written as  $\Y_j = \X_\V - \X_\bot.$
+%%
+%%Since $\X_j$ is centered and $\X_\V$ and $\X_\bot$ are orthogonal, $\cov(\X_\V, \X_\bot) = 0$. 
+%The \tcb{sample} covariance between $\Y_j$ and $\X_j$ is given by  
+%%$\cov(\Y_j, \X_j) = \cov((2\P_j-\I)\X_j, \X_j) = \cov(\X_\V-\X_\bot, \X_\V + \X_\bot) = \cov(\X_\V, \X_\V) + \cov(\X_\V,\X_\bot) - \cov(\X_\bot, \X_\V) - \cov(\X_\bot, \X_\bot) = \cov(\X_\V, \X_\V) - \cov(\X_\bot, \X_\bot) = \var(\X_\V) - \var(\X_\bot)$. 
+%$\cov(\Y_j, \X_j)  = \cov(\X_\V-\X_\bot, \X_\V + \X_\bot)  = \cov(\X_\V, \X_\V) - \cov(\X_\bot, \X_\bot).$ 
+%%Using orthogonality, $\cov(\X_\V, \X_\bot) = \cov(\X_\bot, \X_\V) = 0$, so: 
+%That is, 
+%$\cov(\Y_j, \X_j) = \var(\X_\V) - \var(\X_\bot).$ 
+%Since $\var(\X_j) = \var(\X_\V) + \var(\X_\bot)$, it follows that:
+%$\cov(\Y_j, \X_j) = \var(\X_j) - 2 \var(\X_\bot).$
+%Since $\var(\X_\bot) \ge 0$ with equality holds only if $\X_\bot = 0$, which would violate the assumption that matrix $\X$ has full rank. 
+%%On the other hand, when $\var(\X_\V) = 0$, that is, when $\X_j$ is perpendicular to $\V$, $\X_j=\X_\bot$ and  $\cov(\Y_j, \X_j) = -\var(\X_j)$. 
+%Hence, $\cov(\Y_j, \X_j) < \var(\X_j)$, proving (b).
+%
+%c) Statement c) follows directly from a) and b). Specifically, for any $j$, $4\var(\Z_j) = \cov(\X_j-\Y_j, \X_j-\Y_j) = \cov(\X_j)+\cov(\Y_j) -2\cov(\X_j, \Y_j) =  2-2\cov(\X_j, \X_j - 2\Z_j) = 4\cov(\X_j, \Z_j) = 4\T_{jj}.$
+%From (b) $\cov(\X_j, \Y_j) < \var(\X_j)$, ensuring $\T = \cov(\X,\Z) > 0$.
+%
+%d) From (a), $\Y_j= (2\P_j -\I)\X_j$, where $\P_j$ projects $\X_j$ onto the column space of $\X_{,-j}$. Thus, $\Y_j$ is a linear combination of columns of $\X.$ Consequently, $\Y$ lies in the column space of $\X$. Similarly, $\Z = \frac{1}{2}(\X - \Y)$ also lies in the column space of $\X$. Therefore:
+%\tcb{$\X(\X^t\X)^{-1}\X \Y = \Y$ and $\X(\X^t\X)^{-1}\X \Z = \Z$.} 
+%\end{proof}
+%
+%\subsection{Construct knockoffs based on reflection}
+%Following Equation (2.2) of~\cite[][]{barber.candes.15} and Section 3.1.1 of~\cite[][]{candes.etal.18},  the mean $\b$ and covariance $\C^t\C$ of a knockoff $\tX$ conditional on $\X$ are given by   
+%\begin{equation}
+%\begin{aligned}
+%\b &= \X (\I - \Sigma^{-1} \S) \\
+% \C^t \C &= 2\S - \S \Sigma^{-1} \S.
+%\end{aligned}
+%\end{equation}
+%
+%Let $\S = \alpha \T$ for $\alpha\in(0,1]$. Straightforward calculations using the identities in Lemma~\ref{lem1} parts (c) and (d) yields: 
+%\begin{equation} \label{ctc}
+%\begin{aligned}
+% \b  & = \X - \alpha \Z \\ 
+%\C^t \C    &=  2 \alpha \T - \alpha^2 \; \cov(\Z).                      
+%\end{aligned}
+%\end{equation}
+%
+%To ensure $\C^t\C \ge \0$, we need to determine $\hat\alpha$ such that this condition holds. Noting that $\T$ is positive definite and diagonal, we can rewrite: 
+%\begin{equation} \label{ctc2}
+%\begin{aligned}
+%\C^t \C  &= \T^{1/2} \left[2\alpha \I - \alpha^2 \cov(\Z\T^{-1/2}) \right]\T^{1/2}.                       
+%\end{aligned}
+%\end{equation}
+%
+%Let $\Q\Lambda\Q^t$ be the eigendecomposition of $\cov(\Z \T^{-1/2}).$ Substituting this, we obtain  
+%\begin{equation} \label{ctc3}
+%\begin{aligned}
+%\C^t \C    &= \T^{1/2} \Q \left[2\alpha \I - \alpha^2 \Lambda\right] \Q^t \T^{1/2}.                     
+%\end{aligned}
+%\end{equation}
+%
+%\tcb{For $\C^t \C$ to be positive semi-definite, it is sufficient to have 
+%\begin{equation} \label{B2}
+%\B^2(\alpha) \triangleq 2\alpha\I  - \alpha^2  \Lambda  > \0. 
+%\end{equation}
+%Therefore it's sufficient to have $\alpha \le 2 / \Lambda_1$, where $\Lambda_1$ is the leading eigenvalue of $\cov(\Z \T^{-1/2})$.
+%Since $\Lambda_1$ is positive and finite, and $\alpha \in (0,1]$, the optimal $\hat\alpha$ exists. This ensures $\C^t \C$ is positive semi-definite,  with $\C = \B(\hat\alpha)\Q^t \T^{1/2}.$} Consequently,  $\S=\hat\alpha \T \le 2\;\cov(\X)$, as guaranteed by the Schur complement condition. 
+%
+%We thus construct the knockoff as 
+%\begin{equation} \label{reflection.knockoff}
+%\begin{aligned}
+%\tX = \X  - \hat\alpha \Z + \U \B(\hat\alpha) \Q^t \T^{1/2} 
+%\end{aligned}
+%\end{equation}
+%where: If $\U$ is chosen from the null space of $\X$, $\tX$ is akin to Fixed-X knockoffs.  If $\U_j \sim MVN(\0,\I_n)$, $\tX$ is akin to Model-X second-order knockoff. 
+%Our numerical studies showed that they perform similar (Supplementary Tab. S2), and in this paper we use the later for numerical convenience.  
+%As a special case,  when the columns of $\X$ are uncorrelated, simple calculations show that $\tX = \U$. This implies that for uncorrelated $\X$, $\tX$ can be simulated directly from either a standard normal distribution or the basis of the null space of $\X.$ 
+%
+%
+%
+%
+%\subsection{Shrinkage priors and data augmentation}
+%
+%In Lemma~\ref{lem1}, computing $\Y_j$ requires  the least square fit of the linear regression: 
+%\begin{equation} \label{lm}
+%\X_j = \X_{,-j} \mbeta_{-j} + \e
+%\end{equation}
+%to obtain $\hat\mbeta_{-j}$, which is then used to calculate $\Y_j = 2 \X_{,-j} \hat\mbeta_{-j}  - \X_j$.  
+%When $p$ is large compare to $n$, and/or there exist highly correlated features, the model~\eqref{lm} is prone to overfitting, which can adversely affect the performance of the knockoff filter. 
+%While penalized regression is a good choice to avoid overfitting, Bayesian regression offer a more elegant solution in this context,  as it serves two purposes. 
+%
+%Suppse we put priors on $\mbeta_{-j}$ such as
+%\begin{equation} \label{prior}
+%\mbeta_{-j} \sim MVN(0, \sigma^2 \I_{(p-1)}), 
+%\end{equation} 
+%where $MVN$ denotes multivariate normal distribution, $\I_m$ is the identity matrix of dimension $m$, and $\sigma$ is the prior effect size to be specified. The Bayesian estimated effect sizes are given by 
+%\begin{equation} \label{betahat}
+%\hat\mbeta_{-j} = \left(\X_{,-j}^t \X_{,-j} + \sigma^{-2} \I_{(p-1)}\right)^{-1}  \X_{,-j}^t \X_j.
+%\end{equation} 
+%\tcb{The same solution can be achieved via augmenting $\X$ with ghost observations $\sigma^{-1} \I_p$ such that $\X \leftarrow [\X^t, \sigma^{-1} \I]^t$.} 
+%This data augmentation enables constructing reflection knockoffs for $\X$ of any shape, as the augmented $\X$ will have dimension $(n+p) \times p$ and full rank $p$,  which satisfies the conditions in Lemma~\ref{lem1}.    
+%By augmenting $\X$ with ghost observations, we can extend this construction to handle  cases where $p > n$.   
+%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\subsection{\tcb{Empirical Bayes estimates of shrinkage priors}}
+%
+%\tcb{Consider a Bayesian linear regression for model~\eqref{lm} and prior~\eqref{prior}, we have 
+%\begin{equation}
+%\begin{aligned}\label{model2}
+%\X_j &= \X_{,-j} \beta + \e \\
+%    \beta &\sim MNV(0, \tau^{-1} \sigma^2) \\
+%    \e & \sim MNV(0, \tau^{-1} \I_n) 
+%\end{aligned}
+%\end{equation}
+%Integrate out $\beta$ to obtain the marginal likelihood, and we get 
+%\begin{equation}
+%\X_j|\X_{,-j}, \sigma^2 \sim MNV(0, \tau^{-1} \sigma_j^2 \X_{,-j}\X_{,-j}^t + \tau^{-1}\I).  
+%\end{equation}
+%This is a special case of a linear mixed model and we can obtain maximum likelihood estimate of $\sigma_j^2$ using IDUL~\cite{idul}. 
+%To proceed, we obtain eigeindecomposition $\X_{,-j}\X_{,-j}^t = \Q_j\D_j\Q_j^t$ where $\Q_j$ is orthonormal and $\D_j$ is diagonal. 
+%%(This can be done via singular value decomposition of $\X$ to avoid matrix multiplication.) 
+%We rotate the system by multiplying ~\eqref{model2} by $\Q^t$ from left we get 
+%\begin{equation} \label{ebj}
+%\X'_j | \X'_{,-j}, \sigma^2 \sim MNV(0, \tau^{-1} \sigma_j^2 \D_j + \tau^{-1}).
+%\end{equation}
+%For this particular application, we find that using a bisection method is more stable than IDUL, particularly for smaller $p$.  In addition, a practical upper bound $1$ can be imposed on $\sigma_j^2$ to facilitate the bisection. Therefore, we used the bisection method to find maximum likelihood estimate of $\sigma_j$.
+%}
+%
+%\tcb{We estimated $\sigma_j^2$ for each feature, which requires eigendecomposition of $\X_{,-j}\X_{,-j}^t$ for each $j$, and naive computation can be expensive $O(np^3)$. Here we approximate eigenvectors of  $\X_{-j}\X_{-j}^t$ with eigenvectors of  $\X\X^t$, but update eigenvalues for each $\X_{-j}\X_{-j}^t$.  The rank one update for eigenvalue requires one to solve secular equations, which can be solved in a constant time (for updating a single eigenvalue) using another bisection search method. The total complexity of to obtain eigenvalues for  $\X_{-j}\X_{-j}^t$ using rank one update is $O(np+p^2)$ (more details in Supplementary Section 1).  
+%For eigen decomposition of $\X\X^t$, we implemented randomized singular value decomposition (rSVD)~\cite{rsvd} to efficiently compute (say $200$) approximate leading eigenpairs, and use them to compute empirical Bayes estimated priors. }
+%
+%\tcb{A comparison between a fixed prior and empirical Bayes estimated priors on power and realized FDR can be found in Supplementary Fig.~S1.}
+%
+%
+%
+%
+%\subsection{Computation}
+%To speed up the computation and avoid repeatedly computing the matrix inverse needed for $\hat\mbeta_{-j}$ in Equation~\eqref{betahat}, we employ QR decomposition of $\X$: $\X = \Q\R,$ where $\Q$ is orthonormal $n \times p$ and $\R$ is a $p \times p$ upper triangular matrix. Multiply both sides of the linear regression~\eqref{lm} by $Q^t$, we get $\R_j = \R_{,-j} \mbeta_{-j} + \e_\Q$, where $\R_j$ is the $j$th column of $\R$, and $\R_{,-j}$ is the matrix with its $j$-th column removed. 
+%
+%{\bf Efficient computation via Givens Rotation.} The matrix $\R_{,-j}$ is close to being upper triangular and requires at most $(p-j)$ many Givens rotations to become triangular, which can be done efficiently.  A Givens rotation corresponds to left-multiplying a sparse matrix, which we apply to both sides of the regression. Importantly, this rotation is unitary and does not affect mean and variance of the error term.
+%%
+%Once the matrix is properly triangularized, we use backward substitution to solve the system for $\hat\mbeta_{-j}.$ This value is then used to compute $\tR_j$ and subsequently $\Y_j$. 
+%
+%
+%{\bf Parallel Computing for Speed-Up.} The algorithm below outlines the steps, where the for loop can be parallelized for efficiency. Our software  implementation leverages this feature for high-performance computation.
+%
+%%\newpage
+%
+%\vspace{-0.2in}
+% {\centering
+%\begin{minipage}[t]{\linewidth}
+%\begin{algorithm}[H]
+%\caption{QR decomposition for Householder reflection}
+%\label{alg:aug}
+%\begin{algorithmic}[1]
+%    \STATE \textbf{Input:} A matrix $\X$ of $n \times p$ with full rank $p$.  
+%    \STATE \textbf{Output:} ${\Y}$ of $n \times p$. 
+%    \STATE Augment $\X$ by appending $\Sigma_p$, update $n\leftarrow (n+p)$.
+%    \STATE Perform QR decomposition to obtain $\X=\Q\R$.  
+%    \FOR {each column $\R_j$ of $\R$}
+%        \STATE Denote $\R_{,-j}$ as matrix $\R$ with $j$-th column removed.
+%        \STATE Do Givens rotation on $\R_{,-j}$ to obtain an upper triangular matrix $\U$. 
+%        \STATE Do the same sequence of Givens rotation on $\R_j$ to obtain feature $\V$.
+%        \STATE Solve $\V=\U\mbeta_{-j}$ with backward substitution to get $\hat\mbeta_{-j}$. 
+%         \STATE Compute $\tilde{\R}_j = 2 \R_{,-j} \hat\mbeta_{-j}  - \R_j$, which is $j$-th column of $\tilde{\R}$.  
+%    \ENDFOR
+%    \STATE Compute $\Y = \Q \tilde{\R}$ 
+%\STATE \textbf{return} $\Y[1:n,]$
+%\end{algorithmic}
+%\end{algorithm}
+%\end{minipage}
+%\vspace{0.2in}
+%}
+%
+%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\subsection{Aggregation}
+%We present a method for aggregating multiple knockoff statistics. Let $W=(W_1, \dots, W_p)$ represent the knockoff features importance statistics from a single reflection knockoff. Under the null, the distribution $W_j$ is symmetric about zero, ensuring FDR control. 
+%The knockoff threshold $T$ for $W$, controlling the FDR at nominal level $q$ is defined as:  
+%\begin{equation}\label{knockoff.threshold}
+%T=\min\left\{t: \frac{\#\{j: W_j \le -t\}}{\#\{j: W_j \ge t\}  \vee 1} \le q \right\}.
+%\end{equation}
+%
+%Suppose we construct $M$ copies of reflection knockoffs, the $m$-th copy of the knockoff lead to the knockoff statistics $W^{(m)}$ for $m=1, \dots, M$, which are identically distributed as $W$. This assumes the same knockoff construction mechanism, data, and model-fitting procedure, differing only by random seeds or knockoff randomness. The following lemma establishes the validity of aggregating these identically distributed knockoff statistics. 
+%
+%
+%\begin{lemma} \label{lem:threshold}
+%Let $W_{cat} =  (W^{(1)}, \dots, W^{(M)}),$ i.e., the pooled knockoff statistics from the $M$ runs. If we apply the standard knockoff threshold selection rule~\eqref{knockoff.threshold} to $W_{cat}$, the resulting threshold $T_{cat}$ also controls the FDR at level $q$. 
+%Define the average knockoff statistic $\bar{W}_j = \frac{1}{M} \sum_{m=1}^M W^{(m)}_j$. 
+%Selecting feature $j$ such that $ \bar{W}_j > T_{cat}$ controls the FDR at level $q$.  
+%\end{lemma}
+%
+%\begin{proof}
+%For the $m$-th knockoff statistics $W^{(m)}$, the null features are symmetrically distributed around zero and the knockoff threshold selection~\ref{knockoff.threshold} controls the FDR at level $q$ for $W^{(m)}$. Since $W^{(m)}$ for $m=(1,\dots, M)$ are identically distributed, the combined set $W_{cat}$ of size $Mp$ is drawn from the same underlying distribution as $W$.  
+%If the $j$-th feature is a null feature, then $W^{(m)}_j$ is symmetric about zero for all $m \in (1,\dots, M)$.  Conversely, if the $j$-th features is non-null, then $W^{(m)}_j > 0$ for all $m \in (1,\dots, M)$. The two counts in~\eqref{knockoff.threshold} have the same expectation for each $j$ and for all $t$. Thus, applying the knockoff threshold rule to $W_{cat}$ yields a threshold $T_{cat}$ that controls FDR at level $q$.
+%
+%For a null feature $j$, the distribution of $W^{(m)}_j$ is symmetric about zero. Formally, the pair $(W^{(m)}_j, -W^{(m)}_j)$ is identically distributed. This symmetry holds for each copy of the knockoff. The average statistics $\bar{W}_j$ preserves this symmetry, ensuring that $\bar{W}_j$ is symmetry about zero. The super-martingale argument from the original FDR control proof applies directly~\cite[supplementary material of][]{barber.candes.15}. Under the null, features have no preference for positive or negative deviations. Thus, selecting feature $j$ such that $ \bar{W}_j > T_{cat}$ controls the FDR at level $q$.
+%\end{proof}
+%
+ 
+
+
+
+%\newpage
+\section{Results}
+
+\subsection{Reflection Knockoffs}
+
+A key observation leading to our invention of reflection knockoffs is that the reflection of a feature $\X_j$ over the hyperplane spanned by other features $\X_{,-j}$ produces a $\Y_j$ that is an almost perfect knockoff for that feature. Such $\Y_j$ can be computed using Householder reflection.  Indeed, $\cov(\X_j, \Y_k) = \cov(\X_j, \X_k)$ for $j \ne k$ (Lemma 1 in Materials and Methods), where $\cov$ denotes sample covariance. As a candidate for knockoff of $\X$, a linear combination of $\X$ and $\Y$ has the \tcb{correct sample covariances between different column vectors, but not correct sample variances.}  \tcb{The variance, however, can be fixed by adding a term that is uncorrelated with columns of $\X$ and $\Y$,} and this is the essence of a formulation provided by~\citet{barber.candes.15}.  
+
+The Householder reflection regresses $\X_j$ on $\X_{,-j}$ to obtain a fitted value $\hat\X_j$, then computes the reflection $\Y_j =  2 \hat\X_j - \X_j$. The residual of regression is $\Z_j = \frac{1}{2}(\X_j - \Y_j)$. Therefore $\Z_j$ is orthogonal to $\hat\X_j$ and uncorrelated with all other features. \tcb{Thus, the sample covariance matrix $\T = \cov(\X, \Z)$, where $\T_{jk} = \cov(\X_j, \Z_k)$, is a diagonal matrix with $\T \ge \0$ (Materials and Methods).} We define $\S=\alpha\T$ and seek the largest $\alpha$ such that $\S$ satisfies the constraint in Equation~\eqref{intro.cond}. The optimal $\hat\alpha = 2 / \Lambda_1$, \tcb{where $\Lambda_1$ is the leading eigenvalue of the sample covariance matrix $\C=\cov(\Z \T^{-1/2}),$ where $\C_{jk}$ is the sample covariance between $j$-th and $k$-th column of matrix $\Z \T^{-1/2}.$}  The knockoffs can be computed following Equation~\eqref{reflection.knockoff} in Materials and Methods.  Notably, constructing reflection knockoffs requires no optimization and is numerically stable. 
+
+
+For the knockoff to have power, we need $\S=\hat\alpha\T$ to be bounded away from $0$. Let's examine $\hat\alpha$ and $\T$ in turn. Numerically  $\cov(\Z \T^{-1/2})$ is similar to an identity matrix, with diagonal entries  equal to $1$ and small off-diagonal entries. By Lemma~\ref{lem1} we have $\var(\Z_j) = \T_{jj}$ where $\var$ denote sample variance.  Since $\T>\0$ is diagonal, we have $\diag(\cov(\Z \T^{-1/2})) = \diag(\I_p)$.  The off-diagonal element  $\cov(\Z \T^{-1/2})_{jk}$ is the sample correlation between residuals $\Z_j$ and $\Z_k$.  
+%
+Assuming $\cov(\X_j, \X_k) = r$, and that both are uncorrelated with other features, a straightforward computation yields $\cov(\Z_j, \Z_k) = r(r^2-1)$. Therefore both large (close to $1$ or $-1$) and small (close to $0$) correlations produce small $\cov(\Z_j, \Z_k)$. This calculation also applies when $r$ is the conditional correlation, which can be obtained from the \tcb{sample} precision matrix $\cov(\X)^{-1}$. When features are correlated, the conditional correlation between two features tends to be small.  
+%
+Then by the Gershgorin circle theorem, the eigenvalues  satisfy $|\Lambda_j-1| \le \sum_{k\ne j}|\cov(\Z \T^{-1/2})_{jk}|.$ So as long as the off diagonal entries are small and linearly diminishing with the dimension of $\cov(\Z \T^{-1/2})$, the leading eigenvalue $\Lambda_1$ will be small, and $\hat\alpha$ will be bounded away from $0$.  
+
+By $\T_{jj} = \var(\Z_j)$, for the reflection knockoff to have power  the size of residual $\Z_j$ needs to be bounded away from $0$.   
+When features are highly correlated, however, $\var(\Z_j)$ tends to be small, as $\X_j$ is well explained by $\X_{,-j}$.  Introducing shrinkage priors via ghost samples (Materials and Methods) proves to be an effective way to keep $\var(\Z_j)$ away from $0$.  
+This is a rare example where both sides of the bias and variance tradeoff are beneficial -- we have more consistent estimates of $\Z$ while keeping the size of $\Z$ away from $0.$  Intuitively, when the mirror image is too close to the original feature, the priors bend the mirror so that the image appears farther away in the mirror without introducing obvious distortion. The ghost samples also enable reflection knockoffs to be constructed when the number of features is larger than the number of samples, significantly broadening the scope of applications.   
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Combined knockoff filter}
+  
+We designated a knockoff filter by how the knockoffs were constructed, how the associations were analyzed (either using statistical methods or software packages that implement them), and what feature importance measure was used.  For example, Model-X\allowbreak$\otimes$glmnet\allowbreak$\otimes$Beta means a knockoff filter that constructs Model-X knockoffs, uses glmnet (a R package) to conduct joint association analysis, and chooses the regression coefficient as the importance measure; 
+ReKo\allowbreak$\otimes$fastBVSR\allowbreak$\otimes$PIP means a knockoff filter that constructs reflection knockoffs, performs association analysis using fastBVSR, and uses PIP (posterior inclusion probability) as the importance measure.  
+
+When comparing two knockoffs with everything else being equal, we designate knockoff filters in a manner such as $\otimes$glment\allowbreak$\otimes$Beta. Thus, by saying we are comparing Model-X and ReKo based on $\otimes$glment\allowbreak$\otimes$Beta, we mean comparing power and type I errors between the knockoff filters Model-X\allowbreak$\otimes$glmnet\allowbreak$\otimes$Beta and ReKo\allowbreak$\otimes$glment\allowbreak$\otimes$Beta.  We may omit the  importance measure from the notation of knockoff filters when it is clear from the context. For example, $\otimes$glment means $\otimes$glment$\otimes$Beta, and $\otimes$fastBVSR means $\otimes$fastBVSR$\otimes$PIP.  
+  
+\tcb{A  \emph{combined knockoff filter} \allowbreak$\otimes$combined combines results from knockoff filters $\otimes$glmnet and $\otimes$fastBVSR, such that a feature is selected as positive by the combined filter if and only if it is selected by both $\otimes$glmnet and $\otimes$fastBVSR. The combined knockoff filter provides a means to combine results from Frequentist and Bayesian inferences.} 
+
+
+
+\subsection{Aggregating multiple knockoff statistics}
+\tcb{Due to random component in their construction, knockoffs are inherently random. Consequently, inferences based on a single knockoff statistics can be inconsistent. Generating multiple knockoffs and combining multiple knockoff statistics can effectively increase consistency and power of a knockoff filter~\cite{msko,koscreen}. The existing methods that combine multiple knockoffs assume that feature importance measures can be obtained for each copy of knockoffs independently of the original features~\cite{koscreen}, while for our target applications, it is important to jointly fit a model that contains both origin features and a copy of their knockoffs. We developed a new method that combines multiple sets of knockoff statistics (Material and Method).}
+
+Our aggregating method concatenates multiple sets of knockoff statistics to identify a knockoff threshold at a nominal FDR level, and calls positives by comparing average knockoff statistics of each feature with the knockoff threshold.   
+Intuitively, concatenation increases the sample size used to estimate thresholds and provides a more stable empirical estimate of the distribution of null and non-null features. 
+Concatenation reduces variance in the estimation of threshold-relevant ratios, making the threshold estimation more stable while preserving the original FDR control. 
+Under the null hypothesis, if $m$-th knockoff statistic of $j$-th feature $W^{(m)}_j$ is symmetric around zero for each $m$, their average $\bar{W}_j$ remains symmetric around zero. Consequently, $\bar{W}_j$ retains the crucial null property necessary for FDR control. Averaging also reduces the variance of knockoff statistics for each feature, providing more stable and reproducible feature selection while maintaining theoretical FDR guarantees. 
+Figure~\ref{aggregate} provides an example to demonstrate that aggregating multiple copies of knockoffs  increases power. 
+\tcb{For the numerical analysis conducted in this paper, all results were obtained by aggregating $10$ knockoff statistics, unless otherwise noted.}
+
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{Fig/test-ko.pdf}
+\caption{Aggregating knockoff statistics improve power. Top panel is nominal FDR vs power; Bottom panel is nominal FDR vs realized FDR. The knockoff filter used to call positives is $\otimes$glmnet for all.   Results of Model-X and ReKo were obtained by aggregating $10$ copies of knockoff statistics. For KnockoffScreen, we produced results by using a single copy of knockoff statistics and by aggregating $2,4,$ and $10$ copies of knockoff statistics. The results are based on simulated features with $n=2000$ and $p=800$.  More details of simulation can be found in Supplementary Section 2. }
+\label{aggregate}
+\end{center}
+\vspace{-0.2in}
+\end{figure}
+
+
+%\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Comparing ReKo with other knockoffs}
+    
+\tcb{
+We first compared ReKo with Fixed-X and Model-X knockoffs using synthetic features (Supplementary Tab.~S2). Building upon knowledge gained, we then focus on comparing ReKo with Model-X and KnockoffScreen~\cite{koscreen} using synthetic features of various simulation parameters. 
+These include high and low content of association signals (Supplementary Fig.~S2 and~S3.),  different levels of feature correlations (Supplementary Fig.~S4), and non-normal feature distributions (Supplementary Fig.~S5). With synthetic features, we observed that ReKo is on par or slightly better than KnockoffScreen, and both are noticeably outperform Model-X. Since synthetic feature may not capture intricate correlation in the real datasets, we use real features for comparison.}
+
+% 
+The first real dataset is a subset of $1459$ \tcb{proteomic} features from $9914$ UK Biobank samples. The largest correlation between different features is $0.98$. We simulated phenotypes using $200$ randomly selected features as drivers. Their effect sizes were independently drawn from the standard normal distribution, but rescaled so that the PVE, or Proportion of Variance Explained, was $0.90$.  \tcb{The large PVE used here was motivated by the strong signals observed in real phenotypes.} 
+%
+Power and  realized FDR were computed by pooling results from $100$ replicates.
+For each replicate, we aggregated knockoff statistics from $10$ copies of knockoffs (independently generated for each replicate) to call true and false positives at  nominal FDR levels ranging from $0.01$ to $0.20$. 
+
+
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=0.45\textwidth]{Fig/ukbb-3methods-2.pdf}  
+\includegraphics[width=0.45\textwidth]{Fig/ukbb-3methods.pdf}  
+%\includegraphics[width=0.48\textwidth]{Fig/test-3methods.pdf} 
+%\includegraphics[width=0.48\textwidth]{Fig/hla-3methods.pdf} 
+\caption{Power and realized FDR comparison between different knockoffs. 
+The features are proteomics data from UK Biobank. .
+Left panel: the top plot is \emph{nominal} FDR vs. power.  Right panel: the top plot is \emph{realized} FDR vs. power. The bottom plots of two panels are identical. Different line styles represent different knockoff filters and different colors represent different knockoff methods.   The power and realized FDR were computed from $100$ replicates, and each replicate aggregates $10$ knockoff statistics. 
+}
+\label{ukbb}
+\end{center}
+\vspace{-0.2in}
+\end{figure}
+ 
+Figure~\ref{ukbb} presents the results, and we make the following observations: 1) Model-X appears to be overly conservative on the realized FDR, and its power suffers consequently. 2) Both ReKo and KnockoffScreen showed inflated realized FDR for knockoff filters $\otimes$glmnet and $\otimes$fastBVSR.  With $\otimes$combined, however, both ReKo and KnockoffScreen have their realized FDR under control.  3) ReKo performs on par with KnockoffScreen, the slightly better power observed is likely due to ReKo's slightly higher realized FDR .  4) Knockoff filter $\otimes$fastBVSR appear to be more powerful than $\otimes$glmnet. This is particularly true for Model-X, whose realized FDRs are under control for both knockoff filters.  This echoes our prior studies~\cite{pimass,zhihua} that demonstrated  advantage of Bayesian variable selection over panelized regression.  
+
+
+
+
+\begin{figure}[h]
+\begin{center}
+{\includegraphics[width=0.45\textwidth]{Fig/hla-pm.pdf}}
+{\includegraphics[width=0.45\textwidth]{Fig/modelx-pm.pdf}}
+\caption{Left panel: Comparisons between SuSiE, KnockoffScreen\allowbreak$\otimes$combined, and ReKo\allowbreak$\otimes$combined for different correlation threshold with features were extracted from genomic region \emph{HLA-DQB1}. Results of SuSiE in green; Results of KnockoffScreen in blue; Results of ReKo in red. Different line styles represent thresholds used to trim features. 
+Right panel: Comparison of Model-X\allowbreak$\otimes$glment (solid line), Model-X\allowbreak$\otimes$fastBVSR (dashed line), and Model-X\allowbreak$\otimes$combined (dotted line) for different correlation threshold (orange for correlation threshold of $0.90$, magenta for $0.95$, and pink for $0.99$) using the same features extracted from \emph{HLA-DQB1}. Results for SuSiE, KnockoffScreen$\otimes$combined, and ReKo$\otimes$combined at the threshold of $0.90$ were reproduced on the right panel for comparison.  The power and realized FDR were computed from $50$ replicates, and each replicate aggregates $10$ knockoff statistics. 
+}
+\label{pm}
+\end{center}
+\vspace{-0.2in}
+\end{figure}
+
+\tcb{
+The second dataset of real features consists of genotypes. 
+And our goal is to investigate how high correlation affects performance of knockoff filters. 
+From a trio-phased dataset~\cite{poe} we extracted features of paternal and maternal alleles from genomic region \emph{HLA-DQB1}, which is known for its strong and complex pattern of linkage disequilibrium. We extracted three sets of features each having a different threshold for highest correlation among features: $0.90$, $0.95$, and $0.99$. This is achieved by progressively thinning features in such a way that if a pair of features has a correlation that is higher than a threshold, we randomly remove one feature. 
+%
+To simulate phenotypes we randomly select $8$ causal features, simulate each effect size with standard normal but rescale the effect sizes so that the PVE is $0.20$. For each simulated phenotype, we independently generated knockoffs using Model-X, KnockoffScreen and ReKo.} 
+
+\tcb{Since this simulation is designed to illustrate the application of knockoff filters to study fine mapping, we compared results with SuSiE~\cite{susie}, a Bayesian method for fine mapping.  We used its PIP outputs to call positives for SuSiE: at a nominal FDR $\alpha$, a feature is called positive if its PIP is greater than $1-\alpha$. }
+
+
+ \tcb{Figure~\ref{pm} left panel summarizes the results for KnockoffScreen\allowbreak$\otimes$combined,  ReKo$\otimes$combined, and SuSiE.  We make the following observations:  1) At correlation thresholds $0.90$ and $0.95$, both ReKo\allowbreak$\otimes$combined and KnockoffScreen\allowbreak$\otimes$combined  appear to have well-controlled type I error.  2) ReKo appears to have more power than KnockoffScreen, and at less stringent nominal FDR, ReKo appears to have more power than SuSiE.  3) At correlation $0.99$ both ReKo\allowbreak$\otimes$combined and Knockoff\allowbreak$\otimes$combined show inflated realized FDR.   4) As the correlation threshold increases, the power of all methods decreases. 5) SuSiE has almost flat realized FDR vs. nominal FDR, suggesting that the calibration of its PIP remains challenging in real data analysis, an observation also made by others~\cite{susie-inf}. But its power increases with nominal FDR, and at a more stringent nominal FDR, SuSiE is more powerful than both ReKo and KnockoffScreen. }
+
+\tcb{Figure~\ref{pm} right panel compares Model-X under different knockoff filters using the same datasets. The first interesting observation is that at correlation $0.99$, Model-X shows inflated realized FDR, a phenomenon not seen with proteomic features (Figure~\ref{ukbb}) and synthetic features~(Supplementary Fig.~S3 and Fig.~S4). } The second observation is that Model-X\allowbreak$\otimes$fastBVSR is more powerful than Model-X\allowbreak$\otimes$glment and $\otimes$combined, an observation we made with proteomic features (Figure~\ref{ukbb}).  We therefore use knockoff filters Model-X\allowbreak$\otimes$fastBVSR, KnockoffScreen\allowbreak$\otimes$combined, and ReKo\allowbreak$\otimes$combined for real data analysis. 
+
+
+%\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Proteomic association with age}
+Proteomic signatures of age are an important focus of proteomics and aging studies~\cite{tanaka.etal.18,lehallier.etal.19,tanaka.etal.20,sun.etal.23}. 
+In a recent UK Biobank study using the Olink Explore platform, $1,944$ proteins out of $2,923$ analyzed  were significantly associated with age~\cite{sun.etal.23}. 
+Since protein features are highly correlated, a natural question is how many of these features are drivers and how many are hitchhikers. 
+%
+A driver association remains significant when conditioned on other associated features, while a hitchhiker does not. Thus this question can only be addressed by jointly analyzing all features and cannot be answered by single feature tests.   Knockoff filter is a framework to select (driver) features while keeping FDR under control. For the knockoff filter to work, however, it is important to construct knockoffs with high power, and the ReKo is designed for this requirement. 
+ 
+
+Using a subset of proteomic features from UK Biobank~\cite{sun.etal.23}, we investigated how many proteomic features are drivers in their association with age. We first computed the realized kinship matrix for $14,752$ samples based on genotype data using Kindred~\cite{kindred}. Then we regressed out fixed effects (sex and BMI) and the random effect, whose covariance matrix is a linear scaling of the kinship, from age (the phenotype) and each of the $1,459$ proteomic features using IDUL~\cite{idul}.  The residuals of age and the proteomic features were used for further analysis.  We first examined the marginal association. At a p-value threshold of $3\times10^{-5}$, set by Bonferroni correction, there were $902$ out of $1,459$ (or $62\%$ ) proteomic features significantly associated with age. 
+This proportion aligns with a previous report of $1,944$ out of $2,923$ (or $67\%$)~\cite{sun.etal.23}.   
+
+
+\tcb{We applied three knockoff filters to call positives at nominal FDR levels of $0.05$ and $0.10$.  These knockoff filters include Model-X\allowbreak$\otimes$glmnet, KnockoffScreen\allowbreak$\otimes$combined, and ReKo\allowbreak$\otimes$combined.  For each knockoff filter, we aggregated $10$ sets of knockoff statistics to call positives (Materials and Methods). (The counts of positives called with a single set of knockoff statistics can be found in Supplementary Tab.~S3.)   
+Table~\ref{combined} summarizes the results.  At a nominal FDR of $0.05$ Model-X\allowbreak$\otimes$fastBVSR called $256$ positives (or $16.9\%$ of total number of features),  KnockoffScreen\allowbreak$\otimes$combined called $306$ (or $21.0\%$),  ReKo$\otimes$combined called $309$ (or $21.2\%$).  At a nominal FDR of $0.10$ Model-X\allowbreak$\otimes$fastBVSR called $308$ (or $19.9\%$),  KnockoffScree\allowbreak$\otimes$combined called $361$ (or $24.7\%$), ReKo\allowbreak$\otimes$combined called $371$ (or $25.4\%$). }
+
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{ccccc}
+Level & MX &   KS & ReKo & Overlap\\
+\hline 
+ 0.05 &256&306 & 309 & 291 (90\%)\\
+ 0.10 &308 & 361 & 371 & 345  (89\%)\\
+\hline
+\end{tabular}
+\end{center}
+\vspace{-0.1in}
+\caption{\tcb{Counts of significant association for proteomic data. Column MX contains results from Model-X\allowbreak$\otimes$fastBVSR; Column KS contains results from KnockoffScreen\allowbreak$\otimes$combined; Column ReKo contains results from ReKo\allowbreak$\otimes$combined. Denote $S_K$ and $S_R$ positive calls by KnockoffScreen$\otimes$combined and ReKo$\otimes$combined respectively, Column Overlap contains counts of intersect between $S_K$ and $S_R$, and the ratios in the parenthesis are Jaccard similarity coefficient.}}
+\label{combined}
+\vspace{-0.1in}
+\end{table}%
+%\clearpage
+
+\tcb{At nominal FDR level of $0.05$ the number of overlapping positives between KnockoffScreen and ReKo is $291$, the number of positives called by either KnockoffScreen or ReKo is $324$, and the ratio between counts of intersection and union, known as Jaccard similarity coefficient,  is $90\%$. 
+At nominal FDR level of $0.10$ the counts of intersection and union between positives called by KnockoffScreen and ReKo are $345$ and $387$, and the Jaccard similarity coefficient is $89\%$.  The high Jaccard similarity coefficients signal consistency of positive calls between KnockoffScreen and ReKo. We thus conclude that the majority of proteomic features that show significant association with age in a single feature test are hitchhikers rather than drivers.  
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Genetic fine mapping}
+Genome-wide association studies (GWAS) and expression quantitative trait loci (eQTL) analysis are effective at identifying genomic regions associated with phenotypes.  Due to linkage disequilibrium, however, pinpointing the exact driver variants within these regions is challenging. Fine mapping methods~\cite{caviar,finemap,susie} aim to distinguish the driver variants from hitchhiker variants whose association with the phenotype diminishes once conditioned on driver variants. Among current fine mapping methods SuSiE~\cite{susie} is an elegant Bayesian regression approach  that models multiple driver variants within genomic regions. 
+Here we demonstrate that knockoff filters can be applied to tackle fine mapping. 
+%Owing to its focus on single effect and approximate computation, SuSiE is also computationally efficient. It has been shown, however, that the calibration of PIP of SuSiE remains challenging in real data analysis~\cite{susie-inf}.
+
+
+In a recent study, we discovered abundant genes harboring eQTL (eGene) that have parent-of-origin effect (POE)~\cite{poe}. 
+When a eGene harbors both genotype eQTL and POE eQTL, one may wonder whether POE eQTL are driver signals. Fine mapping can help distinguish drivers from hitchhikers. A challenge in this analysis, however, is that collinearity is introduced into features when genotypes are separated into paternal and maternal alleles.  We therefore removed genotypes and only use paternal and maternal alleles in fine mapping. Removing genotypes still allows us to distinguish between POE eQTL and genotype eQTL, because paternal and maternal alleles tend to have similar effects in the absence of POE.  
+
+
+We selected five example eGenes from the POE eQTL study to perform fine mapping.  The selections include \emph{PPIEL} and \emph{GJB6} that harbor both genotype eQTL and POE eQTL,  \emph{CCR9} that harbors exclusively paternal eQTL, \emph{COA8} that harbors exclusively maternal eQTL, and \emph{NECAB3} that harbors opposing eQTL, whose paternal and maternal alleles having their effect sizes in opposite directions.  For each eGene,  we regressed out  fixed effects including age, sex, BMI, and cell type composition, and random effects that account for relatedness using IDUL~\cite{idul}.  A consecutive genomic region in cis to the eGenes was visually identified by examining the eQTL peak for each selected eGene. Features in the genomic region were then trimmed such that the largest correlations among the remaining features did not exceed $0.90$.  If a pair of features displayed a correlation larger than $0.90$, we kept the one with stronger marginal association.  The trimming was conducted using genotypes, and in our analysis paternal and maternal alleles always present in pairs. 
+
+\begin{table}[h]
+\begin{center}
+{%\tiny
+\begin{tabular}{llccccc}
+eGene &eQTL & MX & KS  & ReKo  & SuSiE & Type\\ 
+\hline
+\multirow{2}{*}{\emph{PPIEL}} 
+&rs79473113:C:A:1:39554348:1 & 1.00 & 1.00 & 1.00 & 1.00 & 1111 \\
+&rs7520271:A:C:1:39579041:1 & 0.80 & 0.82 & 0.87 & 0.97 & 1111 \\
+\hline
+\multirow{4}{*}{\emph{GJB6}}
+&rs12875121:T:C:13:20478719:1 & 0.95 & 0.97 & 0.98 & 0.99 & 1111 \\
+&rs12875121:T:C:13:20478719:0 & 0.76 & 0.78 & 0.79 & 0.89 & 1110 \\
+&rs9506450:G:C:13:20239478:0 & -0.15 & -0.27 & 0.61 & 0.44 & 0010 \\
+&rs9579911:C:G:13:20637437:0 & 0.23 & 0.26 & 0.38 & 0.20 &  0010 \\
+\hline
+\multirow{1}{*}{\emph{CCR9}}
+&rs9814578:T:G:3:45821775:1 & 0.85 & 0.93 & 0.98 & 0.98 & 1111 \\
+\hline
+\multirow{1}{*}{\emph{COA8}}
+&rs10143623:G:A:14:103720539:0 & 0.66 & 0.58 & 0.85 & 0.87 & 1110 \\ 
+\hline
+\multirow{1}{*}{\emph{NECAB3}}
+&rs2626556:A:G:20:33768509:0&  0.79 & 0.80 & 0.88 & 0.95 & 1111\\
+\hline
+\end{tabular}
+}
+\end{center}
+\vspace{-0.1in}
+\caption{\tcb{Fine mapping of selected eGenes. MX: Model-X; KS: KnockoffScreen. Column eQTL contain variants  information in the format of rs:ref:alt:chr:pos:pm where pm can be 1 for paternal alleles, and 0 for maternal alleles. Columns MX, KS, and ReKo contain average knockoff statistics from knockoff filter \allowbreak$\otimes$fastBVSR, aggregated from $10$ replicates of knockoffs respectively. Column SuSiE contains PIP from SuSiE. Column Type contain four binary digits with 1 for positive call and 0 for negative call. From left to right the first digit is for Model-X\allowbreak$\otimes$fastBVSR, the second digit is for KnockoffScreen\allowbreak$\otimes$combined, the third is for ReKo\allowbreak$\otimes$combined, and the fourth digit is for SuSiE. The nominal FDR used to call positives is $0.10$.}}
+\label{poe}
+\vspace{-0.1in}
+\end{table}%
+%add BMP8A? 
+
+%71 ENSG00000121742 GJB6 20221962 rs9506450:G:C:13:20239478 3.094 -0.522 4.375  3.769 1.19074 4.866265 6.444401
+%219 ENSG00000121742 GJB6 20221962 rs9579911:C:G:13:20637437 -0.491 0.742 3.437 4.116 -2.398827 4.167054 22.35704
+
+
+\tcb{
+We performed fine mapping with the five selected eGene using four methods: three knockoff filters Model-X\allowbreak$\otimes$fastBVSR,  KnockoffScreen\allowbreak$\otimes$combined, and ReKo\allowbreak$\otimes$combined, and SuSiE. 
+Table~\ref{poe} summarizes the results and from which we make the following observations: 
+1) \emph{PPIEL} is known to have both genotype eQTL and  paternal eQTL. All four methods identified two paternal alleles as drivers.  
+2) \emph{GJB6} is also known to have both genotype eQTL and maternal eQTL. Both paternal and maternal alleles of SNP \emph{rs12875121} were found to be significant by all three knockoff methods. SuSiE missed the positive call of maternal allele by $0.01$.  This SNP is indeed a genotype eQTL.  
+3) ReKo called two additional maternal eQTL significant for \emph{GJB6},   but Model-X, KnockoffScreen, and SuSiE did not. Regression analysis show that paternal and maternal alleles of SNP \emph{rs12875121} alone had adjusted R-squared value of $0.081$, and adding these two maternal eQTL the adjusted R-squared value increased to $0.103$. This suggests that the two maternal maternal eQTL are likely true positives.  
+4) \emph{CCR9} is known to harbor exclusively paternal eQTL, and all four methods call a paternal eQTL positive.  
+5) \emph{COA8}  provides another example where all three knockoff filters called positive, but the SuSiE missed by a small margin. 
+6) \emph{NECAB}  is known to harbor exclusively opposing eQTL; all four methods reported significant maternal eQTL without its companion paternal eQTL.   
+}
+
+%\newpage
+\section{Discussion}
+
+In this paper, we presented a novel method to construct knockoffs via Householder reflection and demonstrated the power it brings to knockoff filters. We provided a simple method to aggregate multiple sets of identically distributed
+knockoff statistics to improve the consistency of knockoff filters.  
+We also demonstrated that a combined knockoff filter, by combining Bayesian and Frequentist inference, can effectively bring the realized FDR under control when correlation is not extremely high. 
+\tcb{ReKo assumes feature matrix is fixed and known. In this sense, ReKo works within the framework of Fixed-X but provides a novel way to estimate $\S$ in Equation~\ref{intro.cov}. Our current work, however, provides no theoretical guarantee of FDR control under arbitrary covariance structure.} 
+
+We applied reflection knockoffs to address two problems that involve highly correlated features. 
+In the analysis of proteomic signatures of age using knockoff filters, we demonstrated that the majority of proteins showing significance in single-feature tests are hitchhikers, not drivers.  In the analysis of genetic fine mapping, we demonstrated that ReKo can reliably make positive calls that are consistent with Model-X and KnockoffScreen. Two extra positive calls by ReKo alone were supported by high SuSiE PIPs.  ReKo is computationally efficient, particularly when rSVD approximation is invoked. We documented the computational time required to generate knockoffs and to fit models for different knockoff filters in Supplementary Section 10. 
+
+In both simulated features and real datasets, ReKo improves the power of different knockoff filters. We believe ReKo can be beneficial to other knockoff-based methods, such as those developed for genetic association studies~\cite{candes.etal.18,he.etal.21}.  In Figure~\ref{aggregate}, we demonstrate that the aggregation helps KnockoffScreen~\cite{koscreen}.  We believe our method of aggregating multiple sets of identically distributed
+knockoff statistics can also benefit knockoffs constructed by other methods, including hidden Markov model knockoffs~\cite{sesia.etal.19}, KnockoffZoom~\cite{sesia.etal.20}, and GhostKnockoffs~\cite{ghost.knockoff}.  
+
+\tcb{We used empirical Bayes estimated shrinkage priors to combat high correlation when constructing reflection knockoffs, an alternative approach is to use weighted regression in Equation~\eqref{lm} to down-weight covariates in $\X_{-j}$ that are highly correlated with $\X_j$.} This is equivalent to putting a different prior on $\beta_{-j}$ for different $j$. A natural prior for this purpose would be the partial correlation taken from $\cov(\X)^{-1}$. We would still need a separate shrinkage prior to control the overall shrinkage (similar to the $\lambda$ in LASSO), which could be determined empirically, for example, using cross-validation. This can be a fruitful future research topic to further improve reflection knockoffs.   
+
+Trimming highly correlated features was used in the current study to reduce high correlation in the data. As currently implemented, the trimming procedure aimed to keep features with more significant marginal association. There is certainly room for improvement, such as fitting models jointly to rank features, and using the ranks to inform feature trimming.  Compared to trimming, it may be more fruitful to cluster highly correlated features or to perturb highly correlated features with carefully designed noises.  This can be another fruitful future research topic to improve reflection knockoffs.   
+
+\tcb{A clever approach to reduce high correlation in fine mapping is to pool genetic data from multiple ancestral backgrounds~\cite{ghost1,ghost2}. This practice takes advantage of different patterns of LD in different ancestral backgrounds to reduce correlation among genetic markers, which evidently increases power for fine mapping. Knockoff filters can also benefit from pooling genetic data from multiple ancestral backgrounds.}   
+
+A Bayesian procedure such as fastBVSR may produce PIPs that are not calibrated due to, say,  difficulties in estimating priors odds in applications involving highly correlated features. Our study suggests that knockoff filters can indeed improve calibration of PIP by recalibrating it. Similar to computing p-values for Bayes factors~\cite{bf.null}, using a knockoff filter -- an intrinsic Frequentist procedure -- with PIP as the importance measure can be perceived as another example of Bayesian / non-Bayesian compromise~\cite{good}.   Another notable benefit of the knockoff filter is its ability to combine multiple knockoff filters, such as $\otimes$fastBVSR and $\otimes$glmnet,  to improve calibration of the realized FDR. The combined knockoff filter can also be perceived as an example of Bayesian / non-Bayesian compromise.  
+
+Both knockoff filters ReKo\allowbreak$\otimes$glmnet\allowbreak$\otimes$Beta and ReKo\allowbreak$\otimes$fastBVSR\allowbreak$\otimes$PIP produced inflated realized FDR when features were highly correlated. The combined knockoff filter appeared to be effective in controlling the realized FDR when the correlation is not extremely high. 
+The intuition behind this is as follows:  Suppose there are four highly correlated features such that conditioning on any one of these features, the other three features become uncorrelated with the phenotype. One of the features is selected as a driver in simulation. Penalized regression will arbitrarily pick one feature among the four and call it a positive, while the other three are declared negative. In contrast, fastBVSR, by the virtue of model averaging, will assign each feature a PIP of about $0.25$.  If the knockoff threshold happens to be $0.20$, then fastBVSR will produce three false positives, compare to at most one for penalized regression. On the other hand, suppose these four features are null features, only associated with the phenotype via hitchhiking. The model averaging of fastBVSR will make it less likely to produce false positives among these four features compared to glmnet. The combined filter will reduce false positive in both scenarios.  
+
+
+One potential application reflection knockoffs is data sharing for genetic research. By design, knockoffs ensure that the original genetic data cannot be reverse-engineered, thanks to their reliance on random processes and the inherently one-way nature of the construction method. Even with complete knowledge of the algorithm and access to the knockoff data, recovering the original data is mathematically infeasible.
+This opens a transformative pathway for sharing sensitive genetic or proteomic data while meeting stringent privacy and regulatory standards, such as HIPAA. Imagine a collaborative research ecosystem where scientists worldwide can freely access anonymized knockoff datasets to address critical challenges like fine mapping. This mirrors the ethos of the machine learning field, where shared data fuels innovation: 
+the data are there, the goals are clear -- innovate with dare!  
+With reflection knockoffs, genetic research can embrace this model, empowering the community to collectively tackle the most pressing problems with creativity and bravery.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%\newpage
+\section{Materials and Methods}
+\subsection{Reflection}
+We have the following lemma regarding Householder reflection~\cite[c.f.][]{golub.13} and some useful properties for constructing knockoffs. 
+
+\begin{lemma}\label{lem1}
+Suppose the data matrix $\X$ is $n \times p$ with $n > p$ and $\X$ is column-centered, scaled, and has full rank $p$. 
+Denote $\P_j = \X_{,-j} (\X_{,-j}^t  \X_{,-j} )^{-1}  \X_{,-j}^t $ where $\X_{,-j}$ is matrix $\X$ with $j$-th column removed. 
+Compute $\Y$ such that its $j$-th column is a Householder reflection of $\X_j$ with respect to $\P_j$, $\Y_j = (2 \P_j - \I)  \X_j$. 
+Define $\Z = \frac{1}{2}(\X -\Y)$. 
+\tcb{Denote $\cov(\X_j, \Y_k)$ as sample covariance between vector $\X_j$ and $\Y_k$. }
+Then the following hold: 
+\begin{itemize}
+ \item[a)] $\cov(\Y_j, \X_k) = \cov(\X_j, \X_k)$ for all $j \neq k$ and $j,k \in (1,2,\dots, p)$. 
+ \item[b)] $\cov(\Y_j, \X_j) < \var(\X_j)$ for all $j \in (1,2,\dots, p)$. 
+ \item[c)] \tcb{Let $\T$ be a matrix such that $\T_{jk} = \cov(\X_j, \Z_k)$, then $\T_{jk} = 0$ for all $j\ne k$ and $\T_{jj} = \cov(\Z_j, \Z_j) > 0$ for all $j$.}     
+ \item[d)] \tcb{$\X(\X^t\X)^{-1}\X \Y = \Y$ and $\X(\X^t\X)^{-1}\X \Z = \Z$.} 
+ \end{itemize}
+\end{lemma}
+
+\begin{proof}
+a) The projection matrix $\P_j = \X_{,-j}   (\X_{,-j}^t  \X_{,-j} )^{-1}  \X_{,-j}^t$ projects $\X_j$ onto  the column space of $\X_{,-j}$. 
+Since $(\I - \P_j) \X_j$ is orthogonal to $\X_k$ for $k \neq j$, we have $\cov((\I-\P_j) \X_j, \X_k) = 0$. This implies $\cov(\P_j\X_j, \X_k) = \cov(\X_j, \X_k)$.  
+Now $\Y_j = (2\P_j -\I) \X_j$, and direct computation gives: 
+$\cov(\Y_j, \X_k) = \cov((2 \P_j - \I) \X_j, \X_k) = 2 \cov(\P_j\X_j, \X_k) - \cov(\X_j, \X_k).$ 
+Substituting $\cov(\P_j\X_j, \X_k) = \cov(\X_j, \X_k)$, we obtain $\cov(\Y_j, \X_k) = \cov(\X_j, \X_k)$, proving (a).
+
+
+b) The projection of $\X_j$ onto the space spanned by $\X_{,-j}$ as 
+$\X_\V = \P_j \X_j$, and the orthogonal component as $\X_\bot = (\I-\P_j) \X_j$.  Thus, $\X_j=\X_\V + \X_\bot$.
+The Householder reflection $\Y_j$ can then be written as  $\Y_j = \X_\V - \X_\bot.$
+%
+%Since $\X_j$ is centered and $\X_\V$ and $\X_\bot$ are orthogonal, $\cov(\X_\V, \X_\bot) = 0$. 
+The \tcb{sample} covariance between $\Y_j$ and $\X_j$ is given by  
+%$\cov(\Y_j, \X_j) = \cov((2\P_j-\I)\X_j, \X_j) = \cov(\X_\V-\X_\bot, \X_\V + \X_\bot) = \cov(\X_\V, \X_\V) + \cov(\X_\V,\X_\bot) - \cov(\X_\bot, \X_\V) - \cov(\X_\bot, \X_\bot) = \cov(\X_\V, \X_\V) - \cov(\X_\bot, \X_\bot) = \var(\X_\V) - \var(\X_\bot)$. 
+$\cov(\Y_j, \X_j)  = \cov(\X_\V-\X_\bot, \X_\V + \X_\bot)  = \cov(\X_\V, \X_\V) - \cov(\X_\bot, \X_\bot).$ 
+%Using orthogonality, $\cov(\X_\V, \X_\bot) = \cov(\X_\bot, \X_\V) = 0$, so: 
+That is, 
+$\cov(\Y_j, \X_j) = \var(\X_\V) - \var(\X_\bot).$ 
+Since $\var(\X_j) = \var(\X_\V) + \var(\X_\bot)$, it follows that:
+$\cov(\Y_j, \X_j) = \var(\X_j) - 2 \var(\X_\bot).$
+Since $\var(\X_\bot) \ge 0$ with equality holds only if $\X_\bot = 0$, which would violate the assumption that matrix $\X$ has full rank. 
+%On the other hand, when $\var(\X_\V) = 0$, that is, when $\X_j$ is perpendicular to $\V$, $\X_j=\X_\bot$ and  $\cov(\Y_j, \X_j) = -\var(\X_j)$. 
+Hence, $\cov(\Y_j, \X_j) < \var(\X_j)$, proving (b).
+
+c) Statement c) follows directly from a) and b). Specifically, for any $j$, $4\var(\Z_j) = \cov(\X_j-\Y_j, \X_j-\Y_j) = \cov(\X_j)+\cov(\Y_j) -2\cov(\X_j, \Y_j) =  2-2\cov(\X_j, \X_j - 2\Z_j) = 4\cov(\X_j, \Z_j) = 4\T_{jj}.$
+From (b) $\cov(\X_j, \Y_j) < \var(\X_j)$, ensuring $\T = \cov(\X,\Z) > 0$.
+
+d) From (a), $\Y_j= (2\P_j -\I)\X_j$, where $\P_j$ projects $\X_j$ onto the column space of $\X_{,-j}$. Thus, $\Y_j$ is a linear combination of columns of $\X.$ Consequently, $\Y$ lies in the column space of $\X$. Similarly, $\Z = \frac{1}{2}(\X - \Y)$ also lies in the column space of $\X$. Therefore:
+\tcb{$\X(\X^t\X)^{-1}\X \Y = \Y$ and $\X(\X^t\X)^{-1}\X \Z = \Z$.} 
+\end{proof}
+
+\subsection{Construct knockoffs based on reflection}
+Following Equation (2.2) of~\cite[][]{barber.candes.15} and Section 3.1.1 of~\cite[][]{candes.etal.18},  the mean $\b$ and covariance $\C^t\C$ of a knockoff $\tX$ conditional on $\X$ are given by   
+\begin{equation}
+\begin{aligned}
+\b &= \X (\I - \Sigma^{-1} \S) \\
+ \C^t \C &= 2\S - \S \Sigma^{-1} \S.
+\end{aligned}
+\end{equation}
+
+Let $\S = \alpha \T$ for $\alpha\in(0,1]$. Straightforward calculations using the identities in Lemma~\ref{lem1} parts (c) and (d) yields: 
+\begin{equation} \label{ctc}
+\begin{aligned}
+ \b  & = \X - \alpha \Z \\ 
+\C^t \C    &=  2 \alpha \T - \alpha^2 \; \cov(\Z).                      
+\end{aligned}
+\end{equation}
+
+To ensure $\C^t\C \ge \0$, we need to determine $\hat\alpha$ such that this condition holds. Noting that $\T$ is positive definite and diagonal, we can rewrite: 
+\begin{equation} \label{ctc2}
+\begin{aligned}
+\C^t \C  &= \T^{1/2} \left[2\alpha \I - \alpha^2 \cov(\Z\T^{-1/2}) \right]\T^{1/2}.                       
+\end{aligned}
+\end{equation}
+
+Let $\Q\Lambda\Q^t$ be the eigendecomposition of $\cov(\Z \T^{-1/2}).$ Substituting this, we obtain  
+\begin{equation} \label{ctc3}
+\begin{aligned}
+\C^t \C    &= \T^{1/2} \Q \left[2\alpha \I - \alpha^2 \Lambda\right] \Q^t \T^{1/2}.                     
+\end{aligned}
+\end{equation}
+
+\tcb{For $\C^t \C$ to be positive semi-definite, it is sufficient to have 
+\begin{equation} \label{B2}
+\B^2(\alpha) \triangleq 2\alpha\I  - \alpha^2  \Lambda  > \0. 
+\end{equation}
+Therefore it's sufficient to have $\alpha \le 2 / \Lambda_1$, where $\Lambda_1$ is the leading eigenvalue of $\cov(\Z \T^{-1/2})$.
+Since $\Lambda_1$ is positive and finite, and $\alpha \in (0,1]$, the optimal $\hat\alpha$ exists. This ensures $\C^t \C$ is positive semi-definite,  with $\C = \B(\hat\alpha)\Q^t \T^{1/2}.$} Consequently,  $\S=\hat\alpha \T \le 2\;\cov(\X)$, as guaranteed by the Schur complement condition. 
+
+We thus construct the knockoff as 
+\begin{equation} \label{reflection.knockoff}
+\begin{aligned}
+\tX = \X  - \hat\alpha \Z + \U \B(\hat\alpha) \Q^t \T^{1/2} 
+\end{aligned}
+\end{equation}
+where: If $\U$ is chosen from the null space of $\X$, $\tX$ is akin to Fixed-X knockoffs.  If $\U_j \sim MVN(\0,\I_n)$, $\tX$ is akin to Model-X second-order knockoff. 
+Our numerical studies showed that their performances are highly similar (Supplementary Tab. S2), and in this paper we use the later for numerical convenience.  
+As a special case,  when the columns of $\X$ are uncorrelated, simple calculations show that $\tX = \U$. This implies that for uncorrelated $\X$, $\tX$ can be simulated directly from either a standard normal distribution or the basis of the null space of $\X.$ 
+
+
+
+
+\subsection{Shrinkage priors and data augmentation}
+
+In Lemma~\ref{lem1}, computing $\Y_j$ requires  the least square fit of the linear regression: 
+\begin{equation} \label{lm}
+\X_j = \X_{,-j} \mbeta_{-j} + \e
+\end{equation}
+to obtain $\hat\mbeta_{-j}$, which is then used to calculate $\Y_j = 2 \X_{,-j} \hat\mbeta_{-j}  - \X_j$.  
+When $p$ is large compare to $n$, and/or there exist highly correlated features, the model~\eqref{lm} is prone to overfitting, which can adversely affect the performance of the knockoff filter. 
+While penalized regression is a good choice to avoid overfitting, Bayesian regression offer a more elegant solution in this context,  as it serves two purposes. 
+
+Suppse we put priors on $\mbeta_{-j}$ such as
+\begin{equation} \label{prior}
+\mbeta_{-j} \sim MVN(0, \sigma^2 \I_{(p-1)}), 
+\end{equation} 
+where $MVN$ denotes multivariate normal distribution, $\I_m$ is the identity matrix of dimension $m$, and $\sigma$ is the prior effect size to be specified. The Bayesian estimated effect sizes are given by 
+\begin{equation} \label{betahat}
+\hat\mbeta_{-j} = \left(\X_{,-j}^t \X_{,-j} + \sigma^{-2} \I_{(p-1)}\right)^{-1}  \X_{,-j}^t \X_j.
+\end{equation} 
+\tcb{The same solution can be achieved via augmenting $\X$ with ghost observations $\sigma^{-1} \I_p$ such that $\X \leftarrow [\X^t, \sigma^{-1} \I]^t$.} 
+\tcb{A natural choice for $\sigma$ is $\sigma^2 =1/p$,  as this prior ensures the posterior distribution remains well behaved for large $p$. That is, the posterior remain proper and without excessive variance inflation. But empirical Bayes estimated $\sigma$ (to be discussed below) appears to perform better.}
+This data augmentation enables constructing reflection knockoffs for $\X$ of any shape, as the augmented $\X$ will have dimension $(n+p) \times p$ and full rank $p$,  which satisfies the conditions in Lemma~\ref{lem1}.    
+By augmenting $\X$ with ghost observations, we can extend this construction to handle  cases where $p > n$.   
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{\tcb{Empirical Bayes estimates of shrinkage priors}}
+
+\tcb{Consider a Bayesian linear regression for model~\eqref{lm} and prior~\eqref{prior}, we have 
+\begin{equation}
+\begin{aligned}\label{model2}
+\X_j &= \X_{,-j} \beta + \e \\
+    \beta &\sim MNV(0, \tau^{-1} \sigma^2) \\
+    \e & \sim MNV(0, \tau^{-1} \I_n) 
+\end{aligned}
+\end{equation}
+Integrate out $\beta$ to obtain the marginal likelihood, and we get 
+\begin{equation}
+\X_j|\X_{,-j}, \sigma^2 \sim MNV(0, \tau^{-1} \sigma_j^2 \X_{,-j}\X_{,-j}^t + \tau^{-1}\I).  
+\end{equation}
+This is a special case of a linear mixed model and we can obtain maximum likelihood estimate of $\sigma_j^2$ using IDUL~\cite{idul}. 
+To proceed, we obtain eigeindecomposition $\X_{,-j}\X_{,-j}^t = \Q_j\D_j\Q_j^t$ where $\Q_j$ is orthonormal and $\D_j$ is diagonal. 
+%(This can be done via singular value decomposition of $\X$ to avoid matrix multiplication.) 
+We rotate the system by multiplying ~\eqref{model2} by $\Q^t$ from left we get 
+\begin{equation} \label{ebj}
+\X'_j | \X'_{,-j}, \sigma^2 \sim MNV(0, \tau^{-1} \sigma_j^2 \D_j + \tau^{-1}).
+\end{equation}
+For this particular application, we find that using a bisection method is more stable than IDUL, particularly for smaller $p$.  In addition, a practical upper bound $1$ can be imposed on $\sigma_j^2$ to facilitate the bisection. Therefore, we used the bisection method to find maximum likelihood estimate of $\sigma_j$.
+}
+
+\tcb{We estimated $\sigma_j^2$ for each feature, which requires eigendecomposition of $\X_{,-j}\X_{,-j}^t$ for each $j$, and naive computation can be expensive $O(np^3)$. Here we approximate eigenvectors of  $\X_{-j}\X_{-j}^t$ with eigenvectors of  $\X\X^t$, but update eigenvalues for each $\X_{-j}\X_{-j}^t$.  The rank one update for eigenvalue requires one to solve secular equations, which can be solved in a constant time (for updating a single eigenvalue) using another bisection search method. The total complexity of to obtain eigenvalues for  $\X_{-j}\X_{-j}^t$ using rank one update is $O(np+p^2)$ (more details in Supplementary Section 1).  
+For eigen decomposition of $\X\X^t$, we implemented randomized singular value decomposition (rSVD)~\cite{rsvd} to efficiently compute (say $200$) approximate leading eigenpairs, and use them to compute empirical Bayes estimated priors. }
+
+\tcb{After estimating $\sigma_j$ for each $j$, we obtained $\Sigma = diag(\sigma_1, \dots, \sigma_p)$.  Instead of fitting Model~\eqref{model2} for each $j$, which would be prohibitively, we augmented $\X$ with $\Sigma$ and compute reflection using Algorithm~\ref{alg:aug} detailed below. This appears to maintain the performance and computation efficiency. A comparison between data augmentation with empirical Bayes estimated priors  and those with fixed priors can be found in Supplementary Fig.~S1.}
+
+
+
+
+\subsection{Computation}
+To speed up the computation and avoid repeatedly computing the matrix inverse needed for $\hat\mbeta_{-j}$ in Equation~\eqref{betahat}, we employ QR decomposition of $\X$: $\X = \Q\R,$ where $\Q$ is orthonormal $n \times p$ and $\R$ is a $p \times p$ upper triangular matrix. Multiply both sides of the linear regression~\eqref{lm} by $Q^t$, we get $\R_j = \R_{,-j} \mbeta_{-j} + \e_\Q$, where $\R_j$ is the $j$th column of $\R$, and $\R_{,-j}$ is the matrix with its $j$-th column removed. 
+
+{\bf Efficient computation via Givens Rotation.} The matrix $\R_{,-j}$ is close to being upper triangular and requires at most $(p-j)$ many Givens rotations to become triangular, which can be done efficiently.  A Givens rotation corresponds to left-multiplying a sparse matrix, which we apply to both sides of the regression. Importantly, this rotation is unitary and does not affect mean and variance of the error term.
+%
+Once the matrix is properly triangularized, we use backward substitution to solve the system for $\hat\mbeta_{-j}.$ This value is then used to compute $\tR_j$ and subsequently $\Y_j$. 
+
+
+{\bf Parallel Computing for Speed-Up.} The algorithm below outlines the steps, where the for loop can be parallelized for efficiency. Our software  implementation leverages this feature for high-performance computation.
+
+%\newpage
+
+\vspace{-0.2in}
+ {\centering
+\begin{minipage}[t]{\linewidth}
+\begin{algorithm}[H]
+\caption{QR decomposition for Householder reflection}
+\label{alg:aug}
+\begin{algorithmic}[1]
+    \STATE \textbf{Input:} A matrix $\X$ of $n \times p$ with full rank $p$.  
+    \STATE \textbf{Output:} ${\Y}$ of $n \times p$. 
+    \STATE Augment $\X$ by appending $\Sigma_p$, update $n\leftarrow (n+p)$.
+    \STATE Perform QR decomposition to obtain $\X=\Q\R$.  
+    \FOR {each column $\R_j$ of $\R$}
+        \STATE Denote $\R_{,-j}$ as matrix $\R$ with $j$-th column removed.
+        \STATE Do Givens rotation on $\R_{,-j}$ to obtain an upper triangular matrix $\U$. 
+        \STATE Do the same sequence of Givens rotation on $\R_j$ to obtain feature $\V$.
+        \STATE Solve $\V=\U\mbeta_{-j}$ with backward substitution to get $\hat\mbeta_{-j}$. 
+         \STATE Compute $\tilde{\R}_j = 2 \R_{,-j} \hat\mbeta_{-j}  - \R_j$, which is $j$-th column of $\tilde{\R}$.  
+    \ENDFOR
+    \STATE Compute $\Y = \Q \tilde{\R}$ 
+\STATE \textbf{return} $\Y[1:n,]$
+\end{algorithmic}
+\end{algorithm}
+\end{minipage}
+\vspace{0.2in}
+}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Aggregation}
+We present a method for aggregating multiple knockoff statistics. Let $W=(W_1, \dots, W_p)$ represent the knockoff features importance statistics from a single reflection knockoff. Under the null, the distribution $W_j$ is symmetric about zero, ensuring FDR control. 
+The knockoff threshold $T$ for $W$, controlling the FDR at nominal level $q$ is defined as:  
+\begin{equation}\label{knockoff.threshold}
+T=\min\left\{t: \frac{\#\{j: W_j \le -t\}}{\#\{j: W_j \ge t\}  \vee 1} \le q \right\}.
+\end{equation}
+
+Suppose we construct $M$ copies of reflection knockoffs, the $m$-th copy of the knockoff lead to the knockoff statistics $W^{(m)}$ for $m=1, \dots, M$, which are identically distributed as $W$. This assumes the same knockoff construction mechanism, data, and model-fitting procedure, differing only by random seeds or knockoff randomness. The following lemma establishes the validity of aggregating these identically distributed knockoff statistics. 
+
+
+\begin{lemma} \label{lem:threshold}
+Let $W_{cat} =  (W^{(1)}, \dots, W^{(M)}),$ i.e., the pooled knockoff statistics from the $M$ runs. If we apply the standard knockoff threshold selection rule~\eqref{knockoff.threshold} to $W_{cat}$, the resulting threshold $T_{cat}$ also controls the FDR at level $q$. 
+Define the average knockoff statistic $\bar{W}_j = \frac{1}{M} \sum_{m=1}^M W^{(m)}_j$. 
+Selecting feature $j$ such that $ \bar{W}_j > T_{cat}$ controls the FDR at level $q$.  
+\end{lemma}
+
+\begin{proof}
+For the $m$-th knockoff statistics $W^{(m)}$, the null features are symmetrically distributed around zero and the knockoff threshold selection~\ref{knockoff.threshold} controls the FDR at level $q$ for $W^{(m)}$. Since $W^{(m)}$ for $m=(1,\dots, M)$ are identically distributed, the combined set $W_{cat}$ of size $Mp$ is drawn from the same underlying distribution as $W$.  
+If the $j$-th feature is a null feature, then $W^{(m)}_j$ is symmetric about zero for all $m \in (1,\dots, M)$.  Conversely, if the $j$-th features is non-null, then $W^{(m)}_j > 0$ for all $m \in (1,\dots, M)$. The two counts in~\eqref{knockoff.threshold} have the same expectation for each $j$ and for all $t$. Thus, applying the knockoff threshold rule to $W_{cat}$ yields a threshold $T_{cat}$ that controls FDR at level $q$.
+
+For a null feature $j$, the distribution of $W^{(m)}_j$ is symmetric about zero. Formally, the pair $(W^{(m)}_j, -W^{(m)}_j)$ is identically distributed. This symmetry holds for each copy of the knockoff. The average statistics $\bar{W}_j$ preserves this symmetry, ensuring that $\bar{W}_j$ is symmetry about zero. The super-martingale argument from the original FDR control proof applies directly~\cite[supplementary material of][]{barber.candes.15}. Under the null, features have no preference for positive or negative deviations. Thus, selecting feature $j$ such that $ \bar{W}_j > T_{cat}$ controls the FDR at level $q$.
+\end{proof}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Acknowledgements}
+This research is supported by the Division of Intramural Research of the National Heart, Lung, and Blood Institute, Bethesda, MD (D.L. Principal Investigator).  
+\tcb{We thank editors and two anonymous reviewers for their constructive review comments that greatly improved clarity of the presentation. In particular, we thank one reviewer who brought our attention to KnockoffScreen, and the other for suggesting empirical Bayes estimates of the prior effects for reflection.   Our revised manuscript benefitted greatly from both suggestions.} 
+
+\section{Declaration of interests}
+The authors declare no competing interests. 
+
+
+\section{Data and code availability}
+This study analyzed existing datasets from public domain and simulated datasets.  Data from the UK Biobank can be obtained from \url{https://www.ukbiobank.ac.uk/}, and datasets from Framingham Heart Study can be obtained via dbGaP. 
+The software for ReKo and its source code are freely available at \url{https://github.com/haplotype/ReKo}.
+
+\section{Author contributions}
+Y.G. conceived the study, developed the methodology, implemented the computational software and performed experiments, analyzed results, and wrote the manuscript. 
+D.L. supervised the work, provided access to data and computation, edited and approved the final manuscript. 
+
+
+%\newpage
+\label{lastpage}
+%\bibliographystyle{unsrt}
+\bibliographystyle{chicago}
+\bibliography{knockoff-ref}
+
+%\begin{thebibliography}{}
+%
+%\bibitem[\protect\citeauthoryear{Barber and Cand{\`e}s}{Barber and
+%  Cand{\`e}s}{2015}]{barber.candes.15}
+%Barber, R.~F. and E.~J. Cand{\`e}s (2015).
+%\newblock {Controlling the false discovery rate via knockoffs}.
+%\newblock {\em The Annals of Statistics\/}~{\em 43\/}(5), 2055 -- 2085.
+%
+%\bibitem[\protect\citeauthoryear{Benner, Spencer, Havulinna, Salomaa, Ripatti,
+%  and Pirinen}{Benner et~al.}{2016}]{finemap}
+%Benner, C., C.~C.~A. Spencer, A.~S. Havulinna, V.~Salomaa, S.~Ripatti, and
+%  M.~Pirinen (2016, May).
+%\newblock {FINEMAP}: efficient variable selection using summary data from
+%  genome-wide association studies.
+%\newblock {\em Bioinformatics\/}~{\em 32\/}(10), 1493--1501.
+%
+%\bibitem[\protect\citeauthoryear{Breiman}{Breiman}{2001}]{random.forests}
+%Breiman, L. (2001).
+%\newblock Random forests.
+%\newblock {\em Machine Learning\/}~{\em 45\/}(1), 5--32.
+%
+%\bibitem[\protect\citeauthoryear{Cai, Wang, Xiao, Hu, Chen, and Yang}{Cai
+%  et~al.}{2023}]{ghost2}
+%Cai, M., Z.~Wang, J.~Xiao, X.~Hu, G.~Chen, and C.~Yang (2023).
+%\newblock Xmap: Cross-population fine-mapping by leveraging genetic diversity
+%  and accounting for confounding bias.
+%\newblock {\em Nature Communications\/}~{\em 14\/}(1), 6870.
+%
+%\bibitem[\protect\citeauthoryear{Cand{\`e}s, Fan, Janson, and Lv}{Cand{\`e}s
+%  et~al.}{2018}]{candes.etal.18}
+%Cand{\`e}s, E., Y.~Fan, L.~Janson, and J.~Lv (2018, 01).
+%\newblock {Panning for Gold: `Model-X' Knockoffs for High Dimensional
+%  Controlled Variable Selection}.
+%\newblock {\em Journal of the Royal Statistical Society Series B: Statistical
+%  Methodology\/}~{\em 80\/}(3), 551--577.
+%
+%\bibitem[\protect\citeauthoryear{Cortes and Vapnik}{Cortes and
+%  Vapnik}{1995}]{svm}
+%Cortes, C. and V.~Vapnik (1995).
+%\newblock Support-vector networks.
+%\newblock {\em Machine Learning\/}~{\em 20\/}(3), 273--297.
+%
+%\bibitem[\protect\citeauthoryear{Friedman, Tibshirani, and Hastie}{Friedman
+%  et~al.}{2010}]{glmnet}
+%Friedman, J., R.~Tibshirani, and T.~Hastie (2010).
+%\newblock Regularization paths for generalized linear models via coordinate
+%  descent.
+%\newblock {\em Journal of Statistical Software\/}~{\em 33\/}(1), 1--22.
+%
+%\bibitem[\protect\citeauthoryear{Gimenez and Zou}{Gimenez and Zou}{2019}]{msko}
+%Gimenez, J.~R. and J.~Zou (2019, 16--18 Apr).
+%\newblock Improving the stability of the knockoff procedure: Multiple
+%  simultaneous knockoffs and entropy maximization.
+%\newblock In K.~Chaudhuri and M.~Sugiyama (Eds.), {\em Proceedings of the
+%  Twenty-Second International Conference on Artificial Intelligence and
+%  Statistics}, Volume~89 of {\em Proceedings of Machine Learning Research},
+%  pp.\  2184--2192. PMLR.
+%
+%\bibitem[\protect\citeauthoryear{Golub and Van~Loan}{Golub and
+%  Van~Loan}{2013}]{golub.13}
+%Golub, G.~H. and C.~F. Van~Loan (2013).
+%\newblock {\em Matrix Computations\/} (4th ed.).
+%\newblock Baltimore, MD: Johns Hopkins University Press.
+%
+%\bibitem[\protect\citeauthoryear{Good}{Good}{1992}]{good}
+%Good, I.~J. (1992).
+%\newblock The bayes/non-bayes compromise: A brief review.
+%\newblock {\em Journal of the American Statistical Association\/}~{\em
+%  87\/}(419), 597--606.
+%
+%\bibitem[\protect\citeauthoryear{Guan and Levy}{Guan and Levy}{2024a}]{poe}
+%Guan, Y. and D.~Levy (2024a).
+%\newblock Abundant parent-of-origin effect eqtl in humans: The framingham heart
+%  study.
+%\newblock {\em bioRxiv\/}.
+%
+%\bibitem[\protect\citeauthoryear{Guan and Levy}{Guan and Levy}{2024b}]{idul}
+%Guan, Y. and D.~Levy (2024b, 08).
+%\newblock {Asymptotically Exact Fit for Linear Mixed Model in Genetic
+%  Association Studies}.
+%\newblock {\em Genetics\/}, iyae143.
+%
+%\bibitem[\protect\citeauthoryear{Guan and Levy}{Guan and Levy}{2024c}]{kindred}
+%Guan, Y. and D.~Levy (2024c, 02).
+%\newblock {Estimation of inbreeding and kinship coefficients via latent
+%  identity-by-descent states}.
+%\newblock {\em Bioinformatics\/}~{\em 40\/}(2), btae082.
+%
+%\bibitem[\protect\citeauthoryear{Guan and Stephens}{Guan and
+%  Stephens}{2011}]{pimass}
+%Guan, Y. and M.~Stephens (2011).
+%\newblock {Bayesian variable selection regression for genome-wide association
+%  studies and other large-scale problems}.
+%\newblock {\em The Annals of Applied Statistics\/}~{\em 5\/}(3), 1780 -- 1815.
+%
+%\bibitem[\protect\citeauthoryear{Halko, Martinsson, and Tropp}{Halko
+%  et~al.}{2011}]{rsvd}
+%Halko, N., P.~G. Martinsson, and J.~A. Tropp (2011).
+%\newblock Finding structure with randomness: Probabilistic algorithms for
+%  constructing approximate matrix decompositions.
+%\newblock {\em SIAM Review\/}~{\em 53\/}(2), 217--288.
+%
+%\bibitem[\protect\citeauthoryear{He, Liu, Belloy, Le~Guen, Sossin, Liu, Qi, Ma,
+%  Gyawali, Wyss-Coray, Tang, Sabatti, Cand{\`e}s, Greicius, and Ionita-Laza}{He
+%  et~al.}{2022}]{ghost.knockoff}
+%He, Z., L.~Liu, M.~E. Belloy, Y.~Le~Guen, A.~Sossin, X.~Liu, X.~Qi, S.~Ma,
+%  P.~K. Gyawali, T.~Wyss-Coray, H.~Tang, C.~Sabatti, E.~Cand{\`e}s, M.~D.
+%  Greicius, and I.~Ionita-Laza (2022, November).
+%\newblock {GhostKnockoff} inference empowers identification of putative causal
+%  variants in genome-wide association studies.
+%\newblock {\em Nat. Commun.\/}~{\em 13\/}(1), 7209.
+%
+%\bibitem[\protect\citeauthoryear{He, Liu, Wang, Le~Guen, Lee, Gogarten, Lu,
+%  Montgomery, Tang, Silverman, Cho, Greicius, and Ionita-Laza}{He
+%  et~al.}{2021a}]{koscreen}
+%He, Z., L.~Liu, C.~Wang, Y.~Le~Guen, J.~Lee, S.~Gogarten, F.~Lu, S.~Montgomery,
+%  H.~Tang, E.~K. Silverman, M.~H. Cho, M.~Greicius, and I.~Ionita-Laza (2021a).
+%\newblock Identification of putative causal loci in whole-genome sequencing
+%  data via knockoff statistics.
+%\newblock {\em Nature Communications\/}~{\em 12\/}(1), 3152.
+%
+%\bibitem[\protect\citeauthoryear{He, Liu, Wang, Le~Guen, Lee, Gogarten, Lu,
+%  Montgomery, Tang, Silverman, Cho, Greicius, and Ionita-Laza}{He
+%  et~al.}{2021b}]{he.etal.21}
+%He, Z., L.~Liu, C.~Wang, Y.~Le~Guen, J.~Lee, S.~Gogarten, F.~Lu, S.~Montgomery,
+%  H.~Tang, E.~K. Silverman, M.~H. Cho, M.~Greicius, and I.~Ionita-Laza (2021b).
+%\newblock Identification of putative causal loci in whole-genome sequencing
+%  data via knockoff statistics.
+%\newblock {\em Nature Communications\/}~{\em 12\/}(1), 3152.
+%
+%\bibitem[\protect\citeauthoryear{Hormozdiari, Kostem, Kang, Pasaniuc, and
+%  Eskin}{Hormozdiari et~al.}{2014}]{caviar}
+%Hormozdiari, F., E.~Kostem, E.~Y. Kang, B.~Pasaniuc, and E.~Eskin (2014,
+%  October).
+%\newblock Identifying causal variants at loci with multiple signals of
+%  association.
+%\newblock {\em Genetics\/}~{\em 198\/}(2), 497--508.
+%
+%\bibitem[\protect\citeauthoryear{Lehallier, Gate, Schaum, Nanasi, Lee, Yousef,
+%  Moran~Losada, Berdnik, Keller, Verghese, Sathyan, Franceschi, Milman,
+%  Barzilai, and Wyss-Coray}{Lehallier et~al.}{2019}]{lehallier.etal.19}
+%Lehallier, B., D.~Gate, N.~Schaum, T.~Nanasi, S.~E. Lee, H.~Yousef,
+%  P.~Moran~Losada, D.~Berdnik, A.~Keller, J.~Verghese, S.~Sathyan,
+%  C.~Franceschi, S.~Milman, N.~Barzilai, and T.~Wyss-Coray (2019, December).
+%\newblock Undulating changes in human plasma proteome profiles across the
+%  lifespan.
+%\newblock {\em Nat. Med.\/}~{\em 25\/}(12), 1843--1850.
+%
+%\bibitem[\protect\citeauthoryear{Qi, Xie, Chen, Aisa, Hon, and Guan}{Qi
+%  et~al.}{2018}]{zhihua}
+%Qi, Z., S.~Xie, R.~Chen, H.~A. Aisa, G.~C. Hon, and Y.~Guan (2018).
+%\newblock Tissue-specific gene expression prediction associates vitiligo with
+%  suox through an active enhancer.
+%\newblock {\em bioRxiv\/}.
+%
+%%\bibitem[\protect\citeauthoryear{Sesia, Bates, Cand{\`e}s, Marchini, and
+%%  Sabatti}{Sesia et~al.}{2021}]{sesia.etal.21}
+%%Sesia, M., S.~Bates, E.~Cand{\`e}s, J.~Marchini, and C.~Sabatti (2021,
+%%  October).
+%%\newblock False discovery rate control in genome-wide association studies with
+%%  population structure.
+%%\newblock {\em Proc. Natl. Acad. Sci. U. S. A.\/}~{\em 118\/}(40), e2105841118.
+%
+%\bibitem[\protect\citeauthoryear{Sesia, Katsevich, Bates, Cand{\`e}s, and
+%  Sabatti}{Sesia et~al.}{2020}]{sesia.etal.20}
+%Sesia, M., E.~Katsevich, S.~Bates, E.~Cand{\`e}s, and C.~Sabatti (2020).
+%\newblock Multi-resolution localization of causal variants across the genome.
+%\newblock {\em Nature communications\/}~{\em 11\/}(1), 1093.
+%
+%\bibitem[\protect\citeauthoryear{Sesia, Sabatti, and Cand{\`e}s}{Sesia
+%  et~al.}{2019}]{sesia.etal.19}
+%Sesia, M., C.~Sabatti, and E.~J. Cand{\`e}s (2019, March).
+%\newblock Gene hunting with hidden markov model knockoffs.
+%\newblock {\em Biometrika\/}~{\em 106\/}(1), 1--18.
+%
+%\bibitem[\protect\citeauthoryear{Sun, Chiou, Traylor, Benner, Hsu, Richardson,
+%  Surendran, Mahajan, Robins, Vasquez-Grinnell, Hou, Kvikstad, Burren, Davitte,
+%  Ferber, Gillies, Hedman, Hu, Lin, Mikkilineni, Pendergrass, Pickering, Prins,
+%  Baird, Chen, Ward, Deaton, Welsh, Willis, Lehner, Arnold, W{\"o}rheide,
+%  Suhre, Kastenm{\"u}ller, Sethi, Cule, Raj, {Alnylam Human Genetics},
+%  {AstraZeneca Genomics Initiative}, {Biogen Biobank Team}, {Bristol Myers
+%  Squibb}, {Genentech Human Genetics}, {GlaxoSmithKline Genomic Sciences},
+%  {Pfizer Integrative Biology}, {Population Analytics of Janssen Data
+%  Sciences}, {Regeneron Genetics Center}, Burkitt-Gray, Melamud, Black, Fauman,
+%  Howson, Kang, McCarthy, Nioi, Petrovski, Scott, Smith, Szalma, Waterworth,
+%  Mitnaul, Szustakowski, Gibson, Miller, and Whelan}{Sun
+%  et~al.}{2023}]{sun.etal.23}
+%Sun, B.~B., J.~Chiou, M.~Traylor, C.~Benner, Y.-H. Hsu, T.~G. Richardson,
+%  P.~Surendran, A.~Mahajan, C.~Robins, S.~G. Vasquez-Grinnell, L.~Hou, E.~M.
+%  Kvikstad, O.~S. Burren, J.~Davitte, K.~L. Ferber, C.~E. Gillies, A.~K.
+%  Hedman, S.~Hu, T.~Lin, R.~Mikkilineni, R.~K. Pendergrass, C.~Pickering,
+%  B.~Prins, D.~Baird, C.-Y. Chen, L.~D. Ward, A.~M. Deaton, S.~Welsh, C.~M.
+%  Willis, N.~Lehner, M.~Arnold, M.~A. W{\"o}rheide, K.~Suhre,
+%  G.~Kastenm{\"u}ller, A.~Sethi, M.~Cule, A.~Raj, {Alnylam Human Genetics},
+%  {AstraZeneca Genomics Initiative}, {Biogen Biobank Team}, {Bristol Myers
+%  Squibb}, {Genentech Human Genetics}, {GlaxoSmithKline Genomic Sciences},
+%  {Pfizer Integrative Biology}, {Population Analytics of Janssen Data
+%  Sciences}, {Regeneron Genetics Center}, L.~Burkitt-Gray, E.~Melamud, M.~H.
+%  Black, E.~B. Fauman, J.~M.~M. Howson, H.~M. Kang, M.~I. McCarthy, P.~Nioi,
+%  S.~Petrovski, R.~A. Scott, E.~N. Smith, S.~Szalma, D.~M. Waterworth, L.~J.
+%  Mitnaul, J.~D. Szustakowski, B.~W. Gibson, M.~R. Miller, and C.~D. Whelan
+%  (2023, October).
+%\newblock Plasma proteomic associations with genetics and health in the {UK}
+%  biobank.
+%\newblock {\em Nature\/}~{\em 622\/}(7982), 329--338.
+%
+%\bibitem[\protect\citeauthoryear{Tanaka, Basisty, Fantoni, Candia, Moore,
+%  Biancotto, Schilling, Bandinelli, and Ferrucci}{Tanaka
+%  et~al.}{2020}]{tanaka.etal.20}
+%Tanaka, T., N.~Basisty, G.~Fantoni, J.~Candia, A.~Z. Moore, A.~Biancotto,
+%  B.~Schilling, S.~Bandinelli, and L.~Ferrucci (2020, nov).
+%\newblock Plasma proteomic biomarker signature of age predicts health and life
+%  span.
+%\newblock {\em eLife\/}~{\em 9}, e61073.
+%
+%\bibitem[\protect\citeauthoryear{Tanaka, Biancotto, Moaddel, Moore,
+%  Gonzalez-Freire, Aon, Candia, Zhang, Cheung, Fantoni, consortium, Semba, and
+%  Ferrucci}{Tanaka et~al.}{2018}]{tanaka.etal.18}
+%Tanaka, T., A.~Biancotto, R.~Moaddel, A.~Z. Moore, M.~Gonzalez-Freire, M.~A.
+%  Aon, J.~Candia, P.~Zhang, F.~Cheung, G.~Fantoni, C.~consortium, R.~D. Semba,
+%  and L.~Ferrucci (2018).
+%\newblock Plasma proteomic signature of age in healthy humans.
+%\newblock {\em Aging Cell\/}~{\em 17\/}(5), e12799.
+%
+%\bibitem[\protect\citeauthoryear{Tibshirani}{Tibshirani}{1996}]{lasso}
+%Tibshirani, R. (1996).
+%\newblock Regression shrinkage and selection via the lasso.
+%\newblock {\em Journal of the Royal Statistical Society. Series B
+%  (Methodological)\/}~{\em 58\/}(1), 267--288.
+%
+%\bibitem[\protect\citeauthoryear{Wang, Sarkar, Carbonetto, and Stephens}{Wang
+%  et~al.}{2020}]{susie}
+%Wang, G., A.~Sarkar, P.~Carbonetto, and M.~Stephens (2020).
+%\newblock A simple new approach to variable selection in regression, with
+%  application to genetic fine-mapping.
+%\newblock {\em Journal of the Royal Statistical Society: Series B (Statistical
+%  Methodology)\/}~{\em 82\/}(5), 1273--1300.
+%
+%\bibitem[\protect\citeauthoryear{Yuan, Longchamps, Pardiñas, Yu, Chen, Lin,
+%  Chen, Lam, Liu, Xia, Guo, Shi, Shen, Daly, Neale, Feng, Lin, Chen,
+%  O’Donovan, Ge, Huang, and The Schizophrenia Workgroup~of
+%  Psychiatric~Genomics}{Yuan et~al.}{2024}]{ghost1}
+%Yuan, K., R.~J. Longchamps, A.~F. Pardiñas, M.~Yu, T.-T. Chen, S.-C. Lin,
+%  Y.~Chen, M.~Lam, R.~Liu, Y.~Xia, Z.~Guo, W.~Shi, C.~Shen, M.~J. Daly, B.~M.
+%  Neale, Y.-C.~A. Feng, Y.-F. Lin, C.-Y. Chen, M.~C. O’Donovan, T.~Ge,
+%  H.~Huang, and C.~The Schizophrenia Workgroup~of Psychiatric~Genomics (2024).
+%\newblock Fine-mapping across diverse ancestries drives the discovery of
+%  putative causal variants underlying human complex traits and diseases.
+%\newblock {\em Nature Genetics\/}~{\em 56\/}(9), 1841--1850.
+%
+%\bibitem[\protect\citeauthoryear{Zhou and Guan}{Zhou and Guan}{2018}]{bf.null}
+%Zhou, Q. and Y.~Guan (2018).
+%\newblock On the null distribution of bayes factors in linear regression.
+%\newblock {\em Journal of the American Statistical Association\/}~{\em
+%  113\/}(523), 1362--1371.
+%
+%\bibitem[\protect\citeauthoryear{Zhou and Guan}{Zhou and Guan}{2019}]{fastbvsr}
+%Zhou, Q. and Y.~Guan (2019).
+%\newblock {Fast Model-Fitting of Bayesian Variable Selection Regression Using
+%  the Iterative Complex Factorization Algorithm}.
+%\newblock {\em Bayesian Analysis\/}~{\em 14\/}(2), 573 -- 594.
+%
+%\bibitem[\protect\citeauthoryear{Zou and Hastie}{Zou and
+%  Hastie}{2005}]{elastic.net}
+%Zou, H. and T.~Hastie (2005, 03).
+%\newblock Regularization and variable selection via the elastic net.
+%\newblock {\em Journal of the Royal Statistical Society Series B: Statistical
+%  Methodology\/}~{\em 67\/}(2), 301--320.
+%
+%\end{thebibliography}
+
+
+\end{document}
+
+
+
+
